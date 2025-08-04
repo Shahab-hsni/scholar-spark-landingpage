@@ -1,54 +1,169 @@
-# React + TypeScript + Vite
+# ScholarSpark - AI Research Intelligence Platform
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, interactive investor landing page for ScholarSpark, an AI-native platform that unifies the entire research workflow.
 
-Currently, two official plugins are available:
+## 🚀 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Interactive SVG Background**: Dynamic geometric patterns that respond to cursor movement
+- **Glassmorphism Design**: Modern UI with subtle transparency and blur effects
+- **Responsive Layout**: Optimized for all device sizes
+- **Smooth Animations**: Powered by Framer Motion
+- **Modern Tech Stack**: React, TypeScript, Tailwind CSS, Vite
 
-## Expanding the ESLint configuration
+## 🎨 Design Highlights
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **Primary Color**: `#8F8EDF` (Custom purple)
+- **Background**: `#25252D` (Dark theme)
+- **Interactive Elements**: Cursor-following spotlight effects
+- **Typography**: Clean, modern font hierarchy
+- **Components**: Modular, reusable React components
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-});
+## 🛠️ Tech Stack
+
+- **Frontend**: React 18 with TypeScript
+- **Styling**: Tailwind CSS
+- **Animations**: Framer Motion
+- **Build Tool**: Vite
+- **Package Manager**: Yarn/NPM
+- **Icons**: Lucide React
+
+## 📦 Installation
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/YOUR_USERNAME/scholar-spark.git
+cd scholar-spark
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+2. Install dependencies:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x';
-import reactDom from 'eslint-plugin-react-dom';
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-});
+```bash
+yarn install
+# or
+npm install
 ```
+
+3. Start the development server:
+
+```bash
+yarn dev
+# or
+npm run dev
+```
+
+4. Open [http://localhost:5173](http://localhost:5173) in your browser
+
+## 🏗️ Project Structure
+
+```
+scholar-spark/
+├── src/
+│   ├── components/
+│   │   ├── generated/          # Main landing page components
+│   │   │   ├── HeroSection.tsx
+│   │   │   ├── Header.tsx
+│   │   │   ├── SolutionSection.tsx
+│   │   │   └── ScholarSparkInvestorLandingPage.tsx
+│   │   ├── AnimatedGeometricBackground.tsx
+│   │   ├── GeometricBackground.tsx
+│   │   └── BackgroundDemo.tsx
+│   ├── hooks/
+│   ├── lib/
+│   ├── settings/
+│   ├── App.tsx
+│   ├── main.tsx
+│   └── index.css
+├── public/
+├── package.json
+└── README.md
+```
+
+## 🎯 Key Components
+
+### HeroSection.tsx
+
+- Interactive SVG background with cursor tracking
+- Metatron's Cube geometric pattern
+- Spotlight effect that follows mouse movement
+- Responsive hero content
+
+### Header.tsx
+
+- Glassmorphism navigation bar
+- Smooth animations and transitions
+- Mobile-responsive menu
+
+### SolutionSection.tsx
+
+- Feature showcase with animated cards
+- Interactive hover effects
+- Gradient backgrounds and modern styling
+
+## 🎨 Customization
+
+### Colors
+
+The primary color scheme can be customized by updating the `#8F8EDF` color throughout the codebase:
+
+- Primary: `#8F8EDF`
+- Hover: `#7A79C9`
+- Background: `#25252D`
+
+### SVG Patterns
+
+The interactive background uses a custom SVG pattern that can be modified in `HeroSection.tsx`.
+
+## 📱 Responsive Design
+
+The landing page is fully responsive and optimized for:
+
+- Desktop (1200px+)
+- Tablet (768px - 1199px)
+- Mobile (320px - 767px)
+
+## 🚀 Deployment
+
+### Vercel (Recommended)
+
+1. Connect your GitHub repository to Vercel
+2. Deploy automatically on push to main branch
+
+### Netlify
+
+1. Build the project: `yarn build`
+2. Deploy the `dist` folder
+
+### GitHub Pages
+
+1. Add GitHub Pages workflow
+2. Deploy from the `dist` folder
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch: `git checkout -b feature-name`
+3. Commit changes: `git commit -m 'Add feature'`
+4. Push to branch: `git push origin feature-name`
+5. Submit a pull request
+
+## 📄 License
+
+This project is proprietary software for ScholarSpark.
+
+## 👨‍💻 Author
+
+**Pouya Ataei** - Founder & CEO of ScholarSpark
+
+- PhD in AI Research
+- 10+ years in machine learning and NLP
+- Former AI Research Scientist
+
+## 📞 Contact
+
+- **Email**: pouya.ataei@scholarspark.ai
+- **Website**: [ScholarSpark](https://scholarspark.ai)
+
+---
+
+Built with ❤️ for the future of AI-powered research.
