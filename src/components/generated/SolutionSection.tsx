@@ -8,65 +8,65 @@ const SolutionSection: React.FC = () => {
     desc: "AI-powered semantic search that understands context and meaning, not just keywords",
     benefit: "Find 90% more relevant papers",
     color: "from-purple-500 to-blue-500",
-    mpid: "d394c5bb-8851-48c8-94a8-a180091ddb0f"
+    mpid: "fbb24cbe-2661-4563-8da5-1092c77434cf"
   }, {
     icon: Zap,
     title: "Instant Synthesis",
     desc: "Generate comprehensive literature reviews and research summaries in minutes",
     benefit: "10x faster literature reviews",
     color: "from-blue-500 to-cyan-500",
-    mpid: "1a45f9cc-a0a0-48fd-8300-85ebb858ddb7"
+    mpid: "605ab395-7f60-4fca-ad7b-b8700d9f9b8a"
   }, {
     icon: Globe,
     title: "Knowledge Mapping",
     desc: "Visualize research landscapes, identify gaps, and discover emerging connections",
     benefit: "Spot opportunities others miss",
     color: "from-cyan-500 to-green-500",
-    mpid: "a3c7bb2b-c067-45c7-8dc6-96e3f5e4bc08"
+    mpid: "23a5b3a2-0128-4b14-b9a7-2002b3d32650"
   }, {
     icon: Star,
     title: "Trend Analysis",
     desc: "Predict emerging research directions and identify high-impact opportunities",
     benefit: "Stay ahead of the curve",
     color: "from-green-500 to-purple-500",
-    mpid: "0dd18333-8bc6-48a6-80c4-e93cc46c92cb"
+    mpid: "2bb8c9e9-0ba7-49b1-be1c-2aa651ea2bea"
   }] as any[];
   const magicPoints = [{
     icon: Network,
     title: "Proprietary Knowledge Graphs",
     description: "We've built the world's largest academic knowledge graph, connecting concepts, authors, and findings across disciplines.",
-    mpid: "4722179f-5e3a-45e7-85af-9c7aeed7e4fd"
+    mpid: "cc230bd6-d338-4314-8092-b443a52de5e1"
   }, {
     icon: Brain,
     title: "Advanced Language Models",
     description: "Our fine-tuned LLMs understand academic language, methodology, and research context better than any general-purpose AI.",
-    mpid: "269448c8-2673-4f9f-97a3-ac76cf73a923"
+    mpid: "c8ca9480-e17a-4958-95c8-d8ee018b17cc"
   }, {
     icon: Target,
     title: "Multi-Modal Understanding",
     description: "We process not just text, but figures, tables, citations, and metadata to provide complete research intelligence.",
-    mpid: "b463044c-559f-4056-89ad-a3d5ba9bd084"
+    mpid: "292214e3-360e-4197-ab00-c7e1f3fd3682"
   }] as any[];
   const beforeAfter = [{
     before: "Spend weeks searching through databases",
     after: "Get comprehensive results in seconds",
     icon: Search,
-    mpid: "7f791f3f-79c2-4400-8d27-1add74ec980e"
+    mpid: "5b4d7232-b6c1-45dd-9ab1-d1897e530540"
   }, {
     before: "Manually read hundreds of papers",
     after: "AI-generated summaries with key insights",
     icon: BookOpen,
-    mpid: "c4890d31-866b-4f1d-a97f-35c001435cfc"
+    mpid: "203edc9e-fe73-4a08-8557-aaff1b3ee49c"
   }, {
     before: "Miss connections between research areas",
     after: "Discover hidden relationships automatically",
     icon: Network,
-    mpid: "54987743-3c58-4176-89f6-adefaaa2dbf0"
+    mpid: "d20cc2b5-e7d5-4869-ad09-22bebf4c6c4e"
   }, {
     before: "Struggle to identify research gaps",
     after: "Clear visualization of opportunities",
     icon: Lightbulb,
-    mpid: "5a1e3e9d-90bc-490f-abfd-8ed16c2b5e1a"
+    mpid: "e1b39dcd-419a-4e2b-993a-be012e7ea9c0"
   }] as any[];
   return <section id="solution" className="py-24 px-6 bg-gradient-to-b from-gray-800 to-gray-900 relative overflow-hidden" data-magicpath-id="0" data-magicpath-path="SolutionSection.tsx">
       {/* Background Elements */}
@@ -133,15 +133,15 @@ const SolutionSection: React.FC = () => {
                 </div>
                 
                 {/* Content */}
-                <h3 className="text-xl font-bold text-white mb-3 group-hover:text-purple-300 transition-colors duration-300" data-magicpath-uuid={(feature as any)["mpid"] ?? "unsafe"} data-magicpath-field="title:string" data-magicpath-id="18" data-magicpath-path="SolutionSection.tsx">
+                <h3 className="text-xl font-bold text-white mb-3 group-hover:text-purple-300 transition-colors duration-300" data-magicpath-uuid={(feature as any)["mpid"] ?? "unsafe"} data-magicpath-field="title:unknown" data-magicpath-id="18" data-magicpath-path="SolutionSection.tsx">
                   {feature.title}
                 </h3>
-                <p className="text-gray-400 mb-4 leading-relaxed text-sm" data-magicpath-uuid={(feature as any)["mpid"] ?? "unsafe"} data-magicpath-field="desc:string" data-magicpath-id="19" data-magicpath-path="SolutionSection.tsx">
+                <p className="text-gray-400 mb-4 leading-relaxed text-sm" data-magicpath-uuid={(feature as any)["mpid"] ?? "unsafe"} data-magicpath-field="desc:unknown" data-magicpath-id="19" data-magicpath-path="SolutionSection.tsx">
                   {feature.desc}
                 </p>
                 
                 {/* Benefit Badge */}
-                <div className="inline-flex items-center px-3 py-1 bg-purple-500/10 rounded-full text-purple-400 text-xs font-medium" data-magicpath-uuid={(feature as any)["mpid"] ?? "unsafe"} data-magicpath-field="benefit:string" data-magicpath-id="20" data-magicpath-path="SolutionSection.tsx">
+                <div className="inline-flex items-center px-3 py-1 bg-purple-500/10 rounded-full text-purple-400 text-xs font-medium" data-magicpath-uuid={(feature as any)["mpid"] ?? "unsafe"} data-magicpath-field="benefit:unknown" data-magicpath-id="20" data-magicpath-path="SolutionSection.tsx">
                   <TrendingUp className="w-3 h-3 mr-1" data-magicpath-uuid={(feature as any)["mpid"] ?? "unsafe"} data-magicpath-id="21" data-magicpath-path="SolutionSection.tsx" />
                   {feature.benefit}
                 </div>
@@ -189,11 +189,11 @@ const SolutionSection: React.FC = () => {
                   <div className="space-y-3" data-magicpath-uuid={(item as any)["mpid"] ?? "unsafe"} data-magicpath-id="31" data-magicpath-path="SolutionSection.tsx">
                     <div className="flex items-center space-x-2" data-magicpath-uuid={(item as any)["mpid"] ?? "unsafe"} data-magicpath-id="32" data-magicpath-path="SolutionSection.tsx">
                       <div className="w-2 h-2 bg-red-400 rounded-full" data-magicpath-uuid={(item as any)["mpid"] ?? "unsafe"} data-magicpath-id="33" data-magicpath-path="SolutionSection.tsx"></div>
-                      <span className="text-gray-400 text-sm line-through" data-magicpath-uuid={(item as any)["mpid"] ?? "unsafe"} data-magicpath-field="before:string" data-magicpath-id="34" data-magicpath-path="SolutionSection.tsx">{item.before}</span>
+                      <span className="text-gray-400 text-sm line-through" data-magicpath-uuid={(item as any)["mpid"] ?? "unsafe"} data-magicpath-field="before:unknown" data-magicpath-id="34" data-magicpath-path="SolutionSection.tsx">{item.before}</span>
                     </div>
                     <div className="flex items-center space-x-2" data-magicpath-uuid={(item as any)["mpid"] ?? "unsafe"} data-magicpath-id="35" data-magicpath-path="SolutionSection.tsx">
                       <div className="w-2 h-2 bg-green-400 rounded-full" data-magicpath-uuid={(item as any)["mpid"] ?? "unsafe"} data-magicpath-id="36" data-magicpath-path="SolutionSection.tsx"></div>
-                      <span className="text-white font-medium" data-magicpath-uuid={(item as any)["mpid"] ?? "unsafe"} data-magicpath-field="after:string" data-magicpath-id="37" data-magicpath-path="SolutionSection.tsx">{item.after}</span>
+                      <span className="text-white font-medium" data-magicpath-uuid={(item as any)["mpid"] ?? "unsafe"} data-magicpath-field="after:unknown" data-magicpath-id="37" data-magicpath-path="SolutionSection.tsx">{item.after}</span>
                     </div>
                   </div>
                 </div>
@@ -244,8 +244,8 @@ const SolutionSection: React.FC = () => {
                 <div className="w-12 h-12 bg-purple-500/20 rounded-lg flex items-center justify-center mx-auto mb-4" data-magicpath-uuid={(point as any)["mpid"] ?? "unsafe"} data-magicpath-id="45" data-magicpath-path="SolutionSection.tsx">
                   <point.icon className="w-6 h-6 text-purple-400" data-magicpath-uuid={(point as any)["mpid"] ?? "unsafe"} data-magicpath-id="46" data-magicpath-path="SolutionSection.tsx" />
                 </div>
-                <h4 className="text-lg font-semibold text-white mb-3" data-magicpath-uuid={(point as any)["mpid"] ?? "unsafe"} data-magicpath-field="title:string" data-magicpath-id="47" data-magicpath-path="SolutionSection.tsx">{point.title}</h4>
-                <p className="text-gray-400 text-sm leading-relaxed" data-magicpath-uuid={(point as any)["mpid"] ?? "unsafe"} data-magicpath-field="description:string" data-magicpath-id="48" data-magicpath-path="SolutionSection.tsx">{point.description}</p>
+                <h4 className="text-lg font-semibold text-white mb-3" data-magicpath-uuid={(point as any)["mpid"] ?? "unsafe"} data-magicpath-field="title:unknown" data-magicpath-id="47" data-magicpath-path="SolutionSection.tsx">{point.title}</h4>
+                <p className="text-gray-400 text-sm leading-relaxed" data-magicpath-uuid={(point as any)["mpid"] ?? "unsafe"} data-magicpath-field="description:unknown" data-magicpath-id="48" data-magicpath-path="SolutionSection.tsx">{point.description}</p>
               </motion.div>)}
           </div>
 

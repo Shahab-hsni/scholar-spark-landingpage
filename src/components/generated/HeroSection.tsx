@@ -20,25 +20,25 @@ const HeroSection: React.FC<HeroSectionProps> = ({
     delay: 0,
     x: -100,
     y: -50,
-    mpid: "f2b53f80-b456-4d7e-9e0f-b1d9f65d8219"
+    mpid: "f1fb2762-00ed-4336-baa9-beaeb6abbaf8"
   }, {
     icon: Zap,
     delay: 0.5,
     x: 100,
     y: -80,
-    mpid: "9ea25cb0-efde-42b0-bc95-bcdbf33a57c2"
+    mpid: "67deaa98-07c1-4c52-9553-c8a14047284e"
   }, {
     icon: Globe,
     delay: 1,
     x: -80,
     y: 60,
-    mpid: "4942b9c5-1c07-4c91-b309-80e1613a9f2a"
+    mpid: "6dbaffa3-566f-49a4-9ac2-2919fa622d23"
   }, {
     icon: Sparkles,
     delay: 1.5,
     x: 120,
     y: 40,
-    mpid: "0dceb509-4323-45a0-bc19-9bd3daab8335"
+    mpid: "ec669b12-0f39-4741-8f58-800716eaf6a0"
   }] as any[];
   return <section className="relative min-h-screen flex items-center justify-center px-6 pt-20 overflow-hidden" data-magicpath-id="0" data-magicpath-path="HeroSection.tsx">
       {/* Animated Background Elements */}

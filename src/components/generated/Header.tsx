@@ -12,23 +12,23 @@ const Header: React.FC<HeaderProps> = ({
   const navigationItems = [{
     id: 'problem',
     label: 'Problem',
-    mpid: "4ed26ad0-fc8b-4fed-ad39-dc8c482996b0"
+    mpid: "50835730-322c-481d-8b72-db5759a452ce"
   }, {
     id: 'solution',
     label: 'Solution',
-    mpid: "009f68be-4612-48d4-b259-d615494dffd4"
+    mpid: "683a1440-f215-4ef9-b0d5-cccac90fc813"
   }, {
     id: 'traction',
     label: 'Traction',
-    mpid: "19d3f8f2-aff3-4be4-86f7-04db92fb98f7"
+    mpid: "c1cc31b0-15a8-43fd-84ea-0d360368504d"
   }, {
     id: 'market',
     label: 'Market',
-    mpid: "1363568d-4a7d-45d9-9c5b-8d2d569ae64b"
+    mpid: "aadc0c2e-7f0b-4b7d-b707-a77cef804e13"
   }, {
     id: 'team',
     label: 'Team',
-    mpid: "4795da6b-f244-4b5e-acc4-c99f482388bd"
+    mpid: "d13daa81-e77b-4adb-bd97-33706e285036"
   }] as any[];
   const handleNavClick = (sectionId: string) => {
     if (onNavigate) {
@@ -76,7 +76,7 @@ const Header: React.FC<HeaderProps> = ({
           duration: 0.6,
           delay: 0.2
         }} data-magicpath-id="9" data-magicpath-path="Header.tsx">
-            {navigationItems.map((item, index) => <button key={item.id} onClick={() => handleNavClick(item.id)} className="text-gray-300 hover:text-purple-400 transition-colors duration-300 font-medium relative group" data-magicpath-uuid={(item as any)["mpid"] ?? "unsafe"} data-magicpath-field="label:string" data-magicpath-id="10" data-magicpath-path="Header.tsx">
+            {navigationItems.map((item, index) => <button key={item.id} onClick={() => handleNavClick(item.id)} className="text-gray-300 hover:text-purple-400 transition-colors duration-300 font-medium relative group" data-magicpath-uuid={(item as any)["mpid"] ?? "unsafe"} data-magicpath-field="label:unknown" data-magicpath-id="10" data-magicpath-path="Header.tsx">
                 {item.label}
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-500 to-pink-500 group-hover:w-full transition-all duration-300" data-magicpath-uuid={(item as any)["mpid"] ?? "unsafe"} data-magicpath-id="11" data-magicpath-path="Header.tsx"></span>
               </button>)}
@@ -135,7 +135,7 @@ const Header: React.FC<HeaderProps> = ({
             }} transition={{
               duration: 0.3,
               delay: index * 0.1
-            }} data-magicpath-uuid={(item as any)["mpid"] ?? "unsafe"} data-magicpath-field="label:string" data-magicpath-id="20" data-magicpath-path="Header.tsx">
+            }} data-magicpath-uuid={(item as any)["mpid"] ?? "unsafe"} data-magicpath-field="label:unknown" data-magicpath-id="20" data-magicpath-path="Header.tsx">
                     {item.label}
                   </motion.button>)}
                 <motion.button onClick={handleCTAClick} className="mt-4 px-6 py-3 bg-gradient-to-r from-purple-600 to-pink-600 rounded-lg font-semibold text-white hover:from-purple-700 hover:to-pink-700 transition-all duration-300 text-center" initial={{

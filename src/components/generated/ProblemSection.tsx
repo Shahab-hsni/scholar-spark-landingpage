@@ -8,46 +8,46 @@ const ProblemSection: React.FC = () => {
     label: "New papers published annually",
     desc: "Growing at 8% per year, creating an overwhelming information flood",
     color: "from-red-500 to-orange-500",
-    mpid: "3c96373f-db28-47fe-be24-91605e3ece87"
+    mpid: "71584ca5-1882-47a5-94c0-5e48fb8a3c9b"
   }, {
     icon: Target,
     stat: "73%",
     label: "Of researchers struggle with discovery",
     desc: "Missing relevant work in their field due to poor search tools",
     color: "from-orange-500 to-yellow-500",
-    mpid: "4d7cd368-f73f-494d-94fd-70728a117c27"
+    mpid: "5ab034be-5503-4f30-80fa-d3c2ab9f81fa"
   }, {
     icon: Clock,
     stat: "156 hrs",
     label: "Average time spent on literature review",
     desc: "Per research project - time that could be spent on actual research",
     color: "from-yellow-500 to-red-500",
-    mpid: "3e054e52-55b3-46aa-84ff-c94ab94ef078"
+    mpid: "fc64ed58-1409-41a5-922d-10d27d2cc767"
   }] as any[];
   const painPoints = [{
     icon: Search,
     title: "Inefficient Discovery",
     description: "Traditional keyword search fails to capture semantic meaning and context",
     impact: "Researchers miss 60% of relevant papers",
-    mpid: "e90aaf02-5137-4819-8bb7-e4377417eb94"
+    mpid: "9e112ad6-f17f-4f92-86e7-30c393c1d69a"
   }, {
     icon: BookOpen,
     title: "Information Overload",
     description: "Exponential growth in publications makes comprehensive review impossible",
     impact: "Knowledge gaps and duplicated research",
-    mpid: "ef5f9e15-6cee-435b-8f2d-311be3d8211c"
+    mpid: "9fa39196-3f33-44f9-9e52-4020971859a9"
   }, {
     icon: Brain,
     title: "Manual Synthesis",
     description: "Connecting insights across papers requires extensive manual effort",
     impact: "Slow innovation and missed breakthroughs",
-    mpid: "fd1af733-204d-44c2-89af-34b9af4ffa5f"
+    mpid: "cc99be99-cdcf-40e6-a371-cda7772b6187"
   }, {
     icon: AlertTriangle,
     title: "Quality Assessment",
     description: "Difficulty identifying high-impact, credible research among noise",
     impact: "Wasted time on low-quality sources",
-    mpid: "501f4ff7-43bb-4d1d-b51c-ad9b9f243b7c"
+    mpid: "844bc74f-4fbc-4db3-b779-b70555e76d4f"
   }] as any[];
   return <section id="problem" className="py-24 px-6 bg-gradient-to-b from-gray-900 to-gray-800" data-magicpath-id="0" data-magicpath-path="ProblemSection.tsx">
       <div className="max-w-7xl mx-auto" data-magicpath-id="1" data-magicpath-path="ProblemSection.tsx">
@@ -103,17 +103,17 @@ const ProblemSection: React.FC = () => {
                 </div>
                 
                 {/* Stat */}
-                <div className="text-4xl md:text-5xl font-bold text-white mb-3 group-hover:scale-105 transition-transform duration-300" data-magicpath-uuid={(item as any)["mpid"] ?? "unsafe"} data-magicpath-field="stat:string" data-magicpath-id="14" data-magicpath-path="ProblemSection.tsx">
+                <div className="text-4xl md:text-5xl font-bold text-white mb-3 group-hover:scale-105 transition-transform duration-300" data-magicpath-uuid={(item as any)["mpid"] ?? "unsafe"} data-magicpath-field="stat:unknown" data-magicpath-id="14" data-magicpath-path="ProblemSection.tsx">
                   {item.stat}
                 </div>
                 
                 {/* Label */}
-                <h3 className="text-lg font-semibold text-gray-200 mb-3" data-magicpath-uuid={(item as any)["mpid"] ?? "unsafe"} data-magicpath-field="label:string" data-magicpath-id="15" data-magicpath-path="ProblemSection.tsx">
+                <h3 className="text-lg font-semibold text-gray-200 mb-3" data-magicpath-uuid={(item as any)["mpid"] ?? "unsafe"} data-magicpath-field="label:unknown" data-magicpath-id="15" data-magicpath-path="ProblemSection.tsx">
                   {item.label}
                 </h3>
                 
                 {/* Description */}
-                <p className="text-gray-400 leading-relaxed" data-magicpath-uuid={(item as any)["mpid"] ?? "unsafe"} data-magicpath-field="desc:string" data-magicpath-id="16" data-magicpath-path="ProblemSection.tsx">
+                <p className="text-gray-400 leading-relaxed" data-magicpath-uuid={(item as any)["mpid"] ?? "unsafe"} data-magicpath-field="desc:unknown" data-magicpath-id="16" data-magicpath-path="ProblemSection.tsx">
                   {item.desc}
                 </p>
               </div>
@@ -156,13 +156,13 @@ const ProblemSection: React.FC = () => {
                     </div>
                     
                     <div className="flex-1" data-magicpath-uuid={(point as any)["mpid"] ?? "unsafe"} data-magicpath-id="25" data-magicpath-path="ProblemSection.tsx">
-                      <h4 className="text-xl font-semibold text-white mb-2 group-hover:text-red-300 transition-colors duration-300" data-magicpath-uuid={(point as any)["mpid"] ?? "unsafe"} data-magicpath-field="title:string" data-magicpath-id="26" data-magicpath-path="ProblemSection.tsx">
+                      <h4 className="text-xl font-semibold text-white mb-2 group-hover:text-red-300 transition-colors duration-300" data-magicpath-uuid={(point as any)["mpid"] ?? "unsafe"} data-magicpath-field="title:unknown" data-magicpath-id="26" data-magicpath-path="ProblemSection.tsx">
                         {point.title}
                       </h4>
-                      <p className="text-gray-400 mb-3 leading-relaxed" data-magicpath-uuid={(point as any)["mpid"] ?? "unsafe"} data-magicpath-field="description:string" data-magicpath-id="27" data-magicpath-path="ProblemSection.tsx">
+                      <p className="text-gray-400 mb-3 leading-relaxed" data-magicpath-uuid={(point as any)["mpid"] ?? "unsafe"} data-magicpath-field="description:unknown" data-magicpath-id="27" data-magicpath-path="ProblemSection.tsx">
                         {point.description}
                       </p>
-                      <div className="inline-flex items-center px-3 py-1 bg-red-500/10 rounded-full text-red-400 text-sm font-medium" data-magicpath-uuid={(point as any)["mpid"] ?? "unsafe"} data-magicpath-field="impact:string" data-magicpath-id="28" data-magicpath-path="ProblemSection.tsx">
+                      <div className="inline-flex items-center px-3 py-1 bg-red-500/10 rounded-full text-red-400 text-sm font-medium" data-magicpath-uuid={(point as any)["mpid"] ?? "unsafe"} data-magicpath-field="impact:unknown" data-magicpath-id="28" data-magicpath-path="ProblemSection.tsx">
                         <AlertTriangle className="w-3 h-3 mr-1" data-magicpath-uuid={(point as any)["mpid"] ?? "unsafe"} data-magicpath-id="29" data-magicpath-path="ProblemSection.tsx" />
                         {point.impact}
                       </div>
