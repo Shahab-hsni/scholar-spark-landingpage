@@ -1,243 +1,383 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { ArrowRight, Sparkles, Brain, Zap, Globe } from 'lucide-react';
-interface HeroSectionProps {
-  onCTAClick?: () => void;
-}
-const HeroSection: React.FC<HeroSectionProps> = ({
-  onCTAClick
-}) => {
-  const handleCTAClick = () => {
-    if (onCTAClick) {
-      onCTAClick();
-    } else {
-      window.location.href = 'mailto:pouya.ataei@scholarspark.ai?subject=Investor%20Inquiry:%20ScholarSpark%20Pre-Seed';
-    }
-  };
-  const floatingElements = [{
-    icon: Brain,
-    delay: 0,
-    x: -100,
-    y: -50
-  }, {
-    icon: Zap,
-    delay: 0.5,
-    x: 100,
-    y: -80
-  }, {
-    icon: Globe,
-    delay: 1,
-    x: -80,
-    y: 60
-  }, {
-    icon: Sparkles,
-    delay: 1.5,
-    x: 120,
-    y: 40
-  }] as any[];
-  return <section className="relative min-h-screen flex items-center justify-center px-6 pt-20 overflow-hidden">
-      {/* Animated Background Elements */}
-      <div className="absolute inset-0">
-        {/* Gradient Orbs */}
-        <motion.div className="absolute top-20 left-10 w-32 h-32 bg-purple-500/20 rounded-full blur-xl" animate={{
-        scale: [1, 1.2, 1],
-        opacity: [0.3, 0.6, 0.3]
-      }} transition={{
-        duration: 4,
-        repeat: Infinity,
-        ease: "easeInOut"
-      }} />
-        <motion.div className="absolute bottom-20 right-10 w-48 h-48 bg-pink-500/20 rounded-full blur-xl" animate={{
-        scale: [1.2, 1, 1.2],
-        opacity: [0.4, 0.7, 0.4]
-      }} transition={{
-        duration: 5,
-        repeat: Infinity,
-        ease: "easeInOut",
-        delay: 1
-      }} />
-        <motion.div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-r from-purple-500/10 to-pink-500/10 rounded-full blur-3xl" animate={{
-        rotate: [0, 360],
-        scale: [1, 1.1, 1]
-      }} transition={{
-        duration: 20,
-        repeat: Infinity,
-        ease: "linear"
-      }} />
+// Filename: Hero.tsx
+// This component renders the main hero section for the ScholarSpark investor landing page.
+// It includes a dynamic, interactive SVG background that responds to cursor movement.
 
-        {/* Floating Icons */}
-        {floatingElements.map((element, index) => <motion.div key={index} className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" initial={{
-        opacity: 0,
-        x: element.x,
-        y: element.y,
-        scale: 0
-      }} animate={{
-        opacity: [0, 0.6, 0],
-        x: [element.x, element.x + 20, element.x],
-        y: [element.y, element.y - 20, element.y],
-        scale: [0, 1, 0]
-      }} transition={{
-        duration: 6,
-        repeat: Infinity,
-        delay: element.delay,
-        ease: "easeInOut"
-      }}>
-            <div className="w-12 h-12 bg-gradient-to-br from-purple-500/30 to-pink-500/30 rounded-lg flex items-center justify-center backdrop-blur-sm border border-purple-500/20">
-              <element.icon className="w-6 h-6 text-purple-300" />
+import React, { useRef, useEffect } from 'react';
+
+// The main SVG component for the interactive background.
+// It contains two layers: a base (dark gray) and a highlight (purple) revealed by a mask.
+const MetatronCubeSVG = () => (
+  <div
+    id="hero-svg-container"
+    className="absolute top-0 left-0 w-full h-full flex items-center justify-center z-0 opacity-60 overflow-visible"
+  >
+    <svg
+      viewBox="0 0 973 973"
+      preserveAspectRatio="xMidYMid meet"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className="w-[250%] h-[250%]"
+    >
+      <defs>
+        {/* This radial gradient creates the soft, feathered edge for the spotlight mask */}
+        <radialGradient id="glow-gradient">
+          <stop offset="0%" stopColor="white" stopOpacity="0.8" />
+          <stop offset="60%" stopColor="white" stopOpacity="0.440" />
+          <stop offset="100%" stopColor="white" stopOpacity="0" />
+        </radialGradient>
+        {/* The mask uses the gradient-filled circle to create the faded spotlight effect */}
+        <mask id="cursor-mask">
+          <circle id="cursor-circle" cx="0" cy="0" r="250" fill="url(#glow-gradient)" />
+        </mask>
+        {/* Glow filter for the highlighted elements */}
+        <filter id="glow">
+          <feGaussianBlur stdDeviation="3" result="coloredBlur" />
+          <feMerge>
+            <feMergeNode in="coloredBlur" />
+            <feMergeNode in="SourceGraphic" />
+          </feMerge>
+        </filter>
+      </defs>
+
+      {/* Layer 1: Base SVG (subtle, dark gray) - Always visible */}
+      <g>
+        <g opacity="0.8" stroke="#374151" strokeWidth="1">
+          <path opacity="0.3" d="M486.5 486.5V291.9" />
+          <path opacity="0.3" d="M486.5 486.5L655.024 389.2" />
+          <path opacity="0.3" d="M486.5 486.5L655.024 583.8" />
+          <path opacity="0.3" d="M486.5 486.5V681.1" />
+          <path opacity="0.3" d="M486.502 486.5L317.979 583.8" />
+          <path opacity="0.3" d="M486.502 486.5L317.979 389.2" />
+          <path opacity="0.3" d="M486.5 486.5V97.3" />
+          <path opacity="0.3" d="M486.5 486.5L823.547 291.9" />
+          <path opacity="0.3" d="M486.5 486.5L823.547 681.1" />
+          <path opacity="0.3" d="M486.5 486.5V875.7" />
+          <path opacity="0.3" d="M486.501 486.5L149.454 681.1" />
+          <path opacity="0.3" d="M486.501 486.5L149.454 291.9" />
+          <path opacity="0.3" d="M486.5 291.9L655.024 389.2" />
+          <path opacity="0.5" d="M486.5 291.9L655.024 583.8" strokeDasharray="4.86 4.86" />
+          <path opacity="0.3" d="M486.5 291.9V681.1" />
+          <path opacity="0.5" d="M486.502 291.9L317.979 583.8" strokeDasharray="4.86 4.86" />
+          <path opacity="0.3" d="M486.502 291.9L317.979 389.2" />
+          <path opacity="0.3" d="M486.5 291.9V97.3" />
+          <path opacity="0.3" d="M486.5 291.9H823.547" />
+          <path opacity="0.5" d="M486.5 291.9L823.547 681.1" strokeDasharray="4.86 4.86" />
+          <path opacity="0.3" d="M486.5 291.9V875.7" />
+          <path opacity="0.5" d="M486.501 291.9L149.454 681.1" strokeDasharray="4.86 4.86" />
+          <path opacity="0.3" d="M486.501 291.9H149.454" />
+          <path opacity="0.3" d="M655.024 389.2V583.8" />
+          <path opacity="0.5" d="M655.024 389.2L486.5 681.1" strokeDasharray="4.86 4.86" />
+          <path opacity="0.3" d="M655.026 389.2L317.979 583.8" />
+          <path opacity="0.5" d="M655.026 389.2H317.979" strokeDasharray="4.86 4.86" />
+          <path opacity="0.3" d="M655.024 389.2L486.5 97.3" />
+          <path opacity="0.3" d="M655.024 389.2L823.548 291.9" />
+          <path opacity="0.3" d="M655.024 389.2L823.548 681.1" />
+          <path opacity="0.5" d="M655.024 389.2L486.5 875.7" strokeDasharray="4.86 4.86" />
+          <path opacity="0.3" d="M655.025 389.2L149.454 681.1" />
+          <path opacity="0.5" d="M655.025 389.2L149.454 291.9" strokeDasharray="4.86 4.86" />
+          <path opacity="0.3" d="M655.024 583.8L486.5 681.1" />
+          <path opacity="0.5" d="M655.026 583.8H317.979" strokeDasharray="4.86 4.86" />
+          <path opacity="0.3" d="M655.026 583.8L317.979 389.2" />
+          <path opacity="0.5" d="M655.024 583.8L486.5 97.3" strokeDasharray="4.86 4.86" />
+          <path opacity="0.3" d="M655.024 583.8L823.548 291.9" />
+          <path opacity="0.3" d="M655.024 583.8L823.548 681.1" />
+          <path opacity="0.3" d="M655.024 583.8L486.5 875.7" />
+          <path opacity="0.5" d="M655.025 583.8L149.454 681.1" strokeDasharray="4.86 4.86" />
+          <path opacity="0.3" d="M655.025 583.8L149.454 291.9" />
+          <path opacity="0.3" d="M486.502 681.1L317.979 583.8" />
+          <path opacity="0.5" d="M486.502 681.1L317.979 389.2" strokeDasharray="4.86 4.86" />
+          <path opacity="0.3" d="M486.5 681.1V97.3" />
+          <path opacity="0.5" d="M486.5 681.1L823.547 291.9" strokeDasharray="4.86 4.86" />
+          <path opacity="0.3" d="M486.5 681.1H823.547" />
+          <path opacity="0.3" d="M486.5 681.1V875.7" />
+          <path opacity="0.3" d="M486.501 681.1H149.454" />
+          <path opacity="0.5" d="M486.501 681.1L149.454 291.9" strokeDasharray="4.86 4.86" />
+          <path opacity="0.3" d="M317.979 583.8V389.2" />
+          <path opacity="0.5" d="M317.979 583.8L486.502 97.3" strokeDasharray="4.86 4.86" />
+          <path opacity="0.3" d="M317.979 583.8L823.549 291.9" />
+          <path opacity="0.5" d="M317.979 583.8L823.549 681.1" strokeDasharray="4.86 4.86" />
+          <path opacity="0.3" d="M317.979 583.8L486.502 875.7" />
+          <path opacity="0.3" d="M317.978 583.8L149.454 681.1" />
+          <path opacity="0.3" d="M317.978 583.8L149.454 291.9" />
+          <path opacity="0.3" d="M317.979 389.2L486.502 97.3" />
+          <path opacity="0.5" d="M317.979 389.2L823.549 291.9" strokeDasharray="4.86 4.86" />
+          <path opacity="0.3" d="M317.979 389.2L823.549 681.1" />
+          <path opacity="0.5" d="M317.979 389.2L486.502 875.7" strokeDasharray="4.86 4.86" />
+          <path opacity="0.3" d="M317.978 389.2L149.454 681.1" />
+          <path opacity="0.3" d="M317.978 389.2L149.454 291.9" />
+          <path opacity="0.3" d="M486.5 97.3L823.547 291.9" />
+          <path opacity="0.3" d="M486.5 97.3L823.547 681.1" />
+          <path opacity="0.3" d="M486.5 97.3V875.7" />
+          <path opacity="0.3" d="M486.501 97.3L149.454 681.1" />
+          <path opacity="0.3" d="M486.501 97.3L149.454 291.9" />
+          <path opacity="0.3" d="M823.549 291.9V681.1" />
+          <path opacity="0.3" d="M823.547 291.9L486.5 875.7" />
+          <path opacity="0.2" d="M823.548 291.9L149.454 681.1" />
+          <path opacity="0.3" d="M823.548 291.9H149.454" />
+          <path opacity="0.3" d="M823.547 681.1L486.5 875.7" />
+          <path opacity="0.3" d="M823.548 681.1H149.454" />
+          <path opacity="0.3" d="M823.548 681.1L149.454 291.9" />
+          <path opacity="0.3" d="M486.501 875.7L149.454 681.1" />
+          <path opacity="0.3" d="M486.501 875.7L149.454 291.9" />
+          <path opacity="0.3" d="M149.454 681.1V291.9" />
+        </g>
+        <path
+          d="M486.155 109.145C493.249 109.145 499 103.394 499 96.3C499 89.2058 493.249 83.4548 486.155 83.4548C479.061 83.4548 473.31 89.2058 473.31 96.3C473.31 103.394 479.061 109.145 486.155 109.145Z"
+          fill="#374151"
+          stroke="#374151"
+          strokeWidth="1.5"
+        />
+        <path
+          d="M149.155 304.145C156.249 304.145 162 298.394 162 291.3C162 284.206 156.249 278.455 149.155 278.455C142.061 278.455 136.31 284.206 136.31 291.3C136.31 298.394 142.061 304.145 149.155 304.145Z"
+          fill="#374151"
+          stroke="#374151"
+          strokeWidth="1.5"
+        />
+        <path
+          d="M149.155 694.145C156.249 694.145 162 688.394 162 681.3C162 674.206 156.249 668.455 149.155 668.455C142.061 668.455 136.31 674.206 136.31 681.3C136.31 688.394 142.061 694.145 149.155 694.145Z"
+          fill="#374151"
+          stroke="#374151"
+          strokeWidth="1.5"
+        />
+        <path
+          d="M486.155 888.145C493.249 888.145 499 882.394 499 875.3C499 868.206 493.249 862.455 486.155 862.455C479.061 862.455 473.31 868.206 473.31 875.3C473.31 882.394 479.061 888.145 486.155 888.145Z"
+          fill="#374151"
+          stroke="#374151"
+          strokeWidth="1.5"
+        />
+        <path
+          d="M823.155 694.145C830.249 694.145 836 688.394 836 681.3C836 674.206 830.249 668.455 823.155 668.455C816.061 668.455 810.31 674.206 810.31 681.3C810.31 688.394 816.061 694.145 823.155 694.145Z"
+          fill="#374151"
+          stroke="#374151"
+          strokeWidth="1.5"
+        />
+        <path
+          d="M823.155 305.145C830.249 305.145 836 299.394 836 292.3C836 285.206 830.249 279.455 823.155 279.455C816.061 279.455 810.31 285.206 810.31 292.3C810.31 299.394 816.061 305.145 823.155 305.145Z"
+          fill="#374151"
+          stroke="#374151"
+          strokeWidth="1.5"
+        />
+      </g>
+
+      {/* Layer 2: Highlight SVG (vibrant purple with glow) - Revealed by the mask */}
+      <g mask="url(#cursor-mask)" filter="url(#glow)">
+        <g stroke="#8B5CF6" strokeWidth="1.2">
+          <g opacity="1">
+            <path opacity="0.440" d="M486.5 486.5V291.9" />
+            <path opacity="0.440" d="M486.5 486.5L655.024 389.2" />
+            <path opacity="0.440" d="M486.5 486.5L655.024 583.8" />
+            <path opacity="0.440" d="M486.5 486.5V681.1" />
+            <path opacity="0.440" d="M486.502 486.5L317.979 583.8" />
+            <path opacity="0.440" d="M486.502 486.5L317.979 389.2" />
+            <path opacity="0.440" d="M486.5 486.5V97.3" />
+            <path opacity="0.440" d="M486.5 486.5L823.547 291.9" />
+            <path opacity="0.440" d="M486.5 486.5L823.547 681.1" />
+            <path opacity="0.440" d="M486.5 486.5V875.7" />
+            <path opacity="0.440" d="M486.501 486.5L149.454 681.1" />
+            <path opacity="0.440" d="M486.501 486.5L149.454 291.9" />
+            <path opacity="0.440" d="M486.5 291.9L655.024 389.2" />
+            <path opacity="0.440" d="M486.5 291.9L655.024 583.8" strokeDasharray="4.86 4.86" />
+            <path opacity="0.440" d="M486.5 291.9V681.1" />
+            <path opacity="0.440" d="M486.502 291.9L317.979 583.8" strokeDasharray="4.86 4.86" />
+            <path opacity="0.440" d="M486.502 291.9L317.979 389.2" />
+            <path opacity="0.440" d="M486.5 291.9V97.3" />
+            <path opacity="0.440" d="M486.5 291.9H823.547" />
+            <path opacity="0.440" d="M486.5 291.9L823.547 681.1" strokeDasharray="4.86 4.86" />
+            <path opacity="0.440" d="M486.5 291.9V875.7" />
+            <path opacity="0.440" d="M486.501 291.9L149.454 681.1" strokeDasharray="4.86 4.86" />
+            <path opacity="0.440" d="M486.501 291.9H149.454" />
+            <path opacity="0.440" d="M655.024 389.2V583.8" />
+            <path opacity="0.440" d="M655.024 389.2L486.5 681.1" strokeDasharray="4.86 4.86" />
+            <path opacity="0.440" d="M655.026 389.2L317.979 583.8" />
+            <path opacity="0.440" d="M655.026 389.2H317.979" strokeDasharray="4.86 4.86" />
+            <path opacity="0.440" d="M655.024 389.2L486.5 97.3" />
+            <path opacity="0.440" d="M655.024 389.2L823.548 291.9" />
+            <path opacity="0.440" d="M655.024 389.2L823.548 681.1" />
+            <path opacity="0.440" d="M655.024 389.2L486.5 875.7" strokeDasharray="4.86 4.86" />
+            <path opacity="0.440" d="M655.025 389.2L149.454 681.1" />
+            <path opacity="0.440" d="M655.025 389.2L149.454 291.9" strokeDasharray="4.86 4.86" />
+            <path opacity="0.440" d="M655.024 583.8L486.5 681.1" />
+            <path opacity="0.440" d="M655.026 583.8H317.979" strokeDasharray="4.86 4.86" />
+            <path opacity="0.440" d="M655.026 583.8L317.979 389.2" />
+            <path opacity="0.440" d="M655.024 583.8L486.5 97.3" strokeDasharray="4.86 4.86" />
+            <path opacity="0.440" d="M655.024 583.8L823.548 291.9" />
+            <path opacity="0.440" d="M655.024 583.8L823.548 681.1" />
+            <path opacity="0.440" d="M655.024 583.8L486.5 875.7" />
+            <path opacity="0.440" d="M655.025 583.8L149.454 681.1" strokeDasharray="4.86 4.86" />
+            <path opacity="0.440" d="M655.025 583.8L149.454 291.9" />
+            <path opacity="0.440" d="M486.502 681.1L317.979 583.8" />
+            <path opacity="0.440" d="M486.502 681.1L317.979 389.2" strokeDasharray="4.86 4.86" />
+            <path opacity="0.440" d="M486.5 681.1V97.3" />
+            <path opacity="0.440" d="M486.5 681.1L823.547 291.9" strokeDasharray="4.86 4.86" />
+            <path opacity="0.440" d="M486.5 681.1H823.547" />
+            <path opacity="0.440" d="M486.5 681.1V875.7" />
+            <path opacity="0.440" d="M486.501 681.1H149.454" />
+            <path opacity="0.440" d="M486.501 681.1L149.454 291.9" strokeDasharray="4.86 4.86" />
+            <path opacity="0.440" d="M317.979 583.8V389.2" />
+            <path opacity="0.440" d="M317.979 583.8L486.502 97.3" strokeDasharray="4.86 4.86" />
+            <path opacity="0.440" d="M317.979 583.8L823.549 291.9" />
+            <path opacity="0.440" d="M317.979 583.8L823.549 681.1" strokeDasharray="4.86 4.86" />
+            <path opacity="0.440" d="M317.979 583.8L486.502 875.7" />
+            <path opacity="0.440" d="M317.978 583.8L149.454 681.1" />
+            <path opacity="0.440" d="M317.978 583.8L149.454 291.9" />
+            <path opacity="0.440" d="M317.979 389.2L486.502 97.3" />
+            <path opacity="0.440" d="M317.979 389.2L823.549 291.9" strokeDasharray="4.86 4.86" />
+            <path opacity="0.440" d="M317.979 389.2L823.549 681.1" />
+            <path opacity="0.440" d="M317.979 389.2L486.502 875.7" strokeDasharray="4.86 4.86" />
+            <path opacity="0.440" d="M317.978 389.2L149.454 681.1" />
+            <path opacity="0.440" d="M317.978 389.2L149.454 291.9" />
+            <path opacity="0.440" d="M486.5 97.3L823.547 291.9" />
+            <path opacity="0.440" d="M486.5 97.3L823.547 681.1" />
+            <path opacity="0.440" d="M486.5 97.3V875.7" />
+            <path opacity="0.440" d="M486.501 97.3L149.454 681.1" />
+            <path opacity="0.440" d="M486.501 97.3L149.454 291.9" />
+            <path opacity="0.440" d="M823.549 291.9V681.1" />
+            <path opacity="0.440" d="M823.547 291.9L486.5 875.7" />
+            <path opacity="0.44042" d="M823.548 291.9L149.454 681.1" />
+            <path opacity="0.440" d="M823.548 291.9H149.454" />
+            <path opacity="0.440" d="M823.547 681.1L486.5 875.7" />
+            <path opacity="0.440" d="M823.548 681.1H149.454" />
+            <path opacity="0.440" d="M823.548 681.1L149.454 291.9" />
+            <path opacity="0.440" d="M486.501 875.7L149.454 681.1" />
+            <path opacity="0.440" d="M486.501 875.7L149.454 291.9" />
+            <path opacity="0.440" d="M149.454 681.1V291.9" />
+          </g>
+          <path
+            d="M486.155 109.145C493.249 109.145 499 103.394 499 96.3C499 89.2058 493.249 83.4548 486.155 83.4548C479.061 83.4548 473.31 89.2058 473.31 96.3C473.31 103.394 479.061 109.145 486.155 109.145Z"
+            fill="#8B5CF6"
+            stroke="#8B5CF6"
+            strokeWidth="2.1"
+          />
+          <path
+            d="M149.155 304.145C156.249 304.145 162 298.394 162 291.3C162 284.206 156.249 278.455 149.155 278.455C142.061 278.455 136.31 284.206 136.31 291.3C136.31 298.394 142.061 304.145 149.155 304.145Z"
+            fill="#8B5CF6"
+            stroke="#8B5CF6"
+            strokeWidth="2.1"
+          />
+          <path
+            d="M149.155 694.145C156.249 694.145 162 688.394 162 681.3C162 674.206 156.249 668.455 149.155 668.455C142.061 668.455 136.31 674.206 136.31 681.3C136.31 688.394 142.061 694.145 149.155 694.145Z"
+            fill="#8B5CF6"
+            stroke="#8B5CF6"
+            strokeWidth="2.1"
+          />
+          <path
+            d="M486.155 888.145C493.249 888.145 499 882.394 499 875.3C499 868.206 493.249 862.455 486.155 862.455C479.061 862.455 473.31 868.206 473.31 875.3C473.31 882.394 479.061 888.145 486.155 888.145Z"
+            fill="#8B5CF6"
+            stroke="#8B5CF6"
+            strokeWidth="2.1"
+          />
+          <path
+            d="M823.155 694.145C830.249 694.145 836 688.394 836 681.3C836 674.206 830.249 668.455 823.155 668.455C816.061 668.455 810.31 674.206 810.31 681.3C810.31 688.394 816.061 694.145 823.155 694.145Z"
+            fill="#8B5CF6"
+            stroke="#8B5CF6"
+            strokeWidth="2.1"
+          />
+          <path
+            d="M823.155 305.145C830.249 305.145 836 299.394 836 292.3C836 285.206 830.249 279.455 823.155 279.455C816.061 279.455 810.31 285.206 810.31 292.3C810.31 299.394 816.061 305.145 823.155 305.145Z"
+            fill="#8B5CF6"
+            stroke="#8B5CF6"
+            strokeWidth="2.1"
+          />
+        </g>
+      </g>
+    </svg>
+  </div>
+);
+
+const Hero = () => {
+  // useRef provides a direct reference to the hero section DOM element.
+  const heroRef = useRef<HTMLElement>(null);
+
+  // useEffect sets up the event listener for mouse movement.
+  // It runs only once when the component mounts.
+  useEffect(() => {
+    const heroElement = heroRef.current;
+    if (!heroElement) return;
+
+    const cursorCircle = heroElement.querySelector('#cursor-circle');
+    if (!cursorCircle) return;
+
+    let animationFrameId: number | null = null;
+
+    const handleMouseMove = (e: MouseEvent) => {
+      if (animationFrameId) {
+        cancelAnimationFrame(animationFrameId);
+      }
+
+      animationFrameId = requestAnimationFrame(() => {
+        const svg = heroElement.querySelector('svg');
+        if (!svg) return;
+
+        const rect = svg.getBoundingClientRect();
+
+        // Map screen coordinates to the SVG's 973x973 viewBox
+        const x = (e.clientX - rect.left) * (973 / rect.width);
+        const y = (e.clientY - rect.top) * (973 / rect.height);
+
+        // Update the mask's circle position
+        cursorCircle.setAttribute('cx', x.toString());
+        cursorCircle.setAttribute('cy', y.toString());
+      });
+    };
+
+    heroElement.addEventListener('mousemove', handleMouseMove);
+
+    // Cleanup function to remove the event listener when the component unmounts.
+    return () => {
+      heroElement.removeEventListener('mousemove', handleMouseMove);
+      if (animationFrameId) {
+        cancelAnimationFrame(animationFrameId);
+      }
+    };
+  }, []);
+
+  return (
+    <div className="bg-[#25252d] text-[#E0E0E0]">
+      {/* This style block contains the necessary CSS for the component.
+              In a real-world application, this would typically be in a separate CSS/SCSS file
+              or handled by a CSS-in-JS library.
+            */}
+      <style>{`
+                .hero-gradient { background: radial-gradient(ellipse at top, rgb(101 94 226 / 15%), transparent 35%); }
+                .hero-pattern { position: relative; overflow: hidden; }
+                #hero-svg-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; z-index: 0; opacity: 0.6; }
+                #hero-svg-container svg { width: 95%; height: 100%; }
+                .hero-content { position: relative; z-index: 1; }
+                .glow-button { box-shadow: 0 0 15px rgba(88, 80, 236, 0.5), 0 0 30px rgba(88, 80, 236, 0.3); }
+            `}</style>
+
+      <main className="hero-gradient hero-pattern" ref={heroRef}>
+        <MetatronCubeSVG />
+        <div className="hero-content">
+          <section className="container mx-auto px-4 h-screen flex items-center justify-center text-center">
+            <div className="max-w-4xl mx-auto">
+              <p className="text-lg font-semibold text-[#8F8EDF] mb-2">
+                A RENAISSANCE IN GLOBAL RESEARCH
+              </p>
+              <h1 className="text-4xl sm:text-6xl md:text-7xl font-extrabold text-white mb-6 leading-tight">
+                From Months of Work to Moments of Insight
+              </h1>
+              <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-10">
+                ScholarSpark is the AI-native platform that unifies the entire research workflow,
+                turning 6 months of fragmented work into 6 weeks of focused discovery.
+              </p>
+              <div>
+                <a
+                  href="#cta"
+                  className="bg-[#8F8EDF] text-white font-bold py-4 px-10 rounded-lg text-lg hover:bg-[#7A79C9] transition-all duration-300 glow-button"
+                >
+                  Request Investor Deck
+                </a>
+              </div>
+              <div className="mt-12 text-sm text-gray-400">
+                Founded by Dr. Pouya Ataei, PhD & Validated by 161+ Researchers
+              </div>
             </div>
-          </motion.div>)}
-
-        {/* Geometric Patterns */}
-        <div className="absolute inset-0 opacity-10">
-          <svg className="w-full h-full" viewBox="0 0 1000 1000">
-            <defs>
-              <pattern id="mushroom-pattern" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
-                <circle cx="50" cy="30" r="20" fill="url(#gradient1)" opacity="0.3" />
-                <rect x="45" y="50" width="10" height="30" fill="url(#gradient2)" opacity="0.3" />
-                <polygon points="30,20 70,20 60,40 40,40" fill="url(#gradient1)" opacity="0.2" />
-              </pattern>
-              <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="#8b5cf6" />
-                <stop offset="100%" stopColor="#ec4899" />
-              </linearGradient>
-              <linearGradient id="gradient2" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="#ec4899" />
-                <stop offset="100%" stopColor="#8b5cf6" />
-              </linearGradient>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#mushroom-pattern)" />
-          </svg>
+          </section>
         </div>
-      </div>
-      
-      {/* Main Content */}
-      <div className="relative z-10 text-center max-w-5xl mx-auto">
-        {/* Vision Badge */}
-        <motion.div initial={{
-        opacity: 0,
-        y: 20
-      }} animate={{
-        opacity: 1,
-        y: 0
-      }} transition={{
-        duration: 0.8
-      }} className="mb-8">
-          <span className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-full text-purple-300 text-sm font-medium border border-purple-500/30 backdrop-blur-sm">
-            <Sparkles className="w-4 h-4 mr-2" />
-            Revolutionizing Academic Research with AI
-          </span>
-        </motion.div>
-        
-        {/* Main Headline */}
-        <motion.h1 initial={{
-        opacity: 0,
-        y: 30
-      }} animate={{
-        opacity: 1,
-        y: 0
-      }} transition={{
-        duration: 1,
-        delay: 0.2
-      }} className="text-5xl md:text-7xl lg:text-8xl font-bold mb-8 leading-tight">
-          <span className="bg-gradient-to-r from-white via-purple-200 to-pink-200 bg-clip-text text-transparent">
-            AI-Powered
-          </span>
-          <br />
-          <span className="bg-gradient-to-r from-purple-300 via-pink-300 to-white bg-clip-text text-transparent">
-            Research Intelligence
-          </span>
-        </motion.h1>
-        
-        {/* Sub-headline */}
-        <motion.p initial={{
-        opacity: 0,
-        y: 20
-      }} animate={{
-        opacity: 1,
-        y: 0
-      }} transition={{
-        duration: 0.8,
-        delay: 0.4
-      }} className="text-xl md:text-2xl lg:text-3xl text-gray-300 mb-10 leading-relaxed max-w-4xl mx-auto">
-          Transforming how researchers discover, analyze, and synthesize academic knowledge with 
-          <span className="text-purple-300 font-semibold"> cutting-edge AI technology</span>
-        </motion.p>
-        
-        {/* CTA Buttons */}
-        <motion.div initial={{
-        opacity: 0,
-        y: 20
-      }} animate={{
-        opacity: 1,
-        y: 0
-      }} transition={{
-        duration: 0.8,
-        delay: 0.6
-      }} className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-12">
-          <button onClick={handleCTAClick} className="group px-10 py-5 bg-gradient-to-r from-purple-600 to-pink-600 rounded-xl font-semibold text-lg hover:from-purple-700 hover:to-pink-700 transition-all duration-300 flex items-center space-x-3 shadow-2xl hover:shadow-purple-500/25 transform hover:scale-105">
-            <span>Request Investor Deck</span>
-            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-          </button>
-          
-          <button onClick={() => document.getElementById('solution')?.scrollIntoView({
-          behavior: 'smooth'
-        })} className="px-10 py-5 border-2 border-purple-500/50 rounded-xl font-semibold text-lg hover:border-purple-400 hover:bg-purple-500/10 transition-all duration-300 text-purple-300 hover:text-purple-200">
-            See How It Works
-          </button>
-        </motion.div>
-        
-        {/* Credibility Snippet */}
-        <motion.div initial={{
-        opacity: 0
-      }} animate={{
-        opacity: 1
-      }} transition={{
-        duration: 0.8,
-        delay: 0.8
-      }} className="text-center">
-          <p className="text-gray-400 text-sm mb-4">Trusted by researchers at leading institutions</p>
-          <div className="flex flex-wrap justify-center items-center gap-8 opacity-60">
-            {['Stanford', 'MIT', 'Harvard', 'Oxford', 'Cambridge'].map((institution, index) => <motion.span key={institution} className="text-gray-500 font-medium text-sm tracking-wider" initial={{
-            opacity: 0,
-            y: 10
-          }} animate={{
-            opacity: 1,
-            y: 0
-          }} transition={{
-            duration: 0.5,
-            delay: 0.9 + index * 0.1
-          }}>
-                {institution}
-              </motion.span>)}
-          </div>
-        </motion.div>
-
-        {/* Scroll Indicator */}
-        <motion.div initial={{
-        opacity: 0
-      }} animate={{
-        opacity: 1
-      }} transition={{
-        duration: 0.8,
-        delay: 1.2
-      }} className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
-          <motion.div animate={{
-          y: [0, 10, 0]
-        }} transition={{
-          duration: 2,
-          repeat: Infinity,
-          ease: "easeInOut"
-        }} className="w-6 h-10 border-2 border-purple-400/50 rounded-full flex justify-center">
-            <motion.div animate={{
-            y: [0, 12, 0]
-          }} transition={{
-            duration: 2,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }} className="w-1 h-3 bg-purple-400 rounded-full mt-2" />
-          </motion.div>
-        </motion.div>
-      </div>
-    </section>;
+      </main>
+    </div>
+  );
 };
-export default HeroSection;
+
+export default Hero;
