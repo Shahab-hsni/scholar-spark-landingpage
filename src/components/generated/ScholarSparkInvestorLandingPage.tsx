@@ -1,12 +1,80 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Mail, Users, TrendingUp, Target, Zap, Brain, Globe, Star } from 'lucide-react';
+import Lottie from 'lottie-react';
+import {
+  ArrowRight,
+  Mail,
+  Users,
+  TrendingUp,
+  Target,
+  Zap,
+  Brain,
+  Globe,
+  Star,
+  Search,
+  ListChecks,
+  Layers,
+  Filter,
+  ShieldCheck,
+  Table,
+  Code,
+  FileText,
+  FileCog,
+  BarChart3,
+  FilePenLine,
+  Sparkles,
+  Wrench,
+  Timer,
+  Clock,
+} from 'lucide-react';
 import Hero from './HeroSection';
+import { useNavigate } from 'react-router-dom';
+import RadialOrbitalTimeline, { TimelineItem } from '../ui/RadialOrbitalTimeline';
+// Lottie animations will be loaded dynamically
+
 const ScholarSparkInvestorLandingPage: React.FC = () => {
+  const navigate = useNavigate();
+
   const [mousePosition, setMousePosition] = React.useState({
     x: 0,
     y: 0,
   });
+
+  const [animations, setAnimations] = React.useState({
+    unlink: null,
+    time: null,
+    multiCluster: null,
+  });
+
+  // Load Lottie animations
+  React.useEffect(() => {
+    const loadAnimations = async () => {
+      try {
+        const [unlinkRes, timeRes, multiClusterRes] = await Promise.all([
+          fetch('/lottieFiles/unlink.json'),
+          fetch('/lottieFiles/time.json'),
+          fetch('/lottieFiles/Multi Cluster.json'),
+        ]);
+
+        const [unlinkData, timeData, multiClusterData] = await Promise.all([
+          unlinkRes.json(),
+          timeRes.json(),
+          multiClusterRes.json(),
+        ]);
+
+        setAnimations({
+          unlink: unlinkData,
+          time: timeData,
+          multiCluster: multiClusterData,
+        });
+      } catch (error) {
+        console.error('Error loading Lottie animations:', error);
+      }
+    };
+
+    loadAnimations();
+  }, []);
+
   React.useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
       setMousePosition({
@@ -27,7 +95,7 @@ const ScholarSparkInvestorLandingPage: React.FC = () => {
     });
   };
   return (
-    <div className="min-h-screen bg-gray-900 text-white overflow-x-hidden">
+    <div className="min-h-screen bg-[#0a090c] text-white overflow-x-hidden">
       {/* Header */}
       <header className="fixed top-0 w-full z-50 p-2">
         <div className="container mx-auto">
@@ -59,8 +127,28 @@ const ScholarSparkInvestorLandingPage: React.FC = () => {
               <span className="text-white font-medium text-sm">Home</span>
             </div>
 
-            {/* About - Inactive State */}
-            <div className="text-white font-medium text-sm px-3 py-1.5">About</div>
+            {/* About - Clickable */}
+            <button
+              onClick={() => navigate('/about')}
+              className="text-white font-medium text-sm px-3 py-1.5 hover:bg-[#2A2A2A] hover:border hover:border-gray-500 rounded-lg transition-all duration-200 flex items-center space-x-2"
+            >
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2ZM21 9V7L15 1H5C3.89 1 3 1.89 3 3V21C3 22.11 3.89 23 5 23H19C20.11 23 21 22.11 21 21V9ZM19 21H5V3H13V9H19V21Z"
+                  stroke="white"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+              <span>About</span>
+            </button>
 
             {/* Preview app - Inactive State */}
             <div className="text-white font-medium px-3 py-1.5 flex items-center space-x-2">
@@ -117,7 +205,7 @@ const ScholarSparkInvestorLandingPage: React.FC = () => {
       <Hero />
 
       {/* Problem Section */}
-      <section id="problem" className="py-20 px-6">
+      <section id="problem" className="py-20 section-gradient px-6">
         <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{
@@ -146,22 +234,22 @@ const ScholarSparkInvestorLandingPage: React.FC = () => {
           <div className="grid md:grid-cols-3 gap-8">
             {[
               {
-                icon: TrendingUp,
-                stat: '4M+',
-                label: 'New papers published annually',
-                desc: 'Growing at 8% per year',
+                animation: animations.multiCluster,
+                stat: '6-8',
+                label: 'Disconnected tools per review',
+                desc: 'Researchers juggle multiple platforms',
               },
               {
-                icon: Target,
-                stat: '73%',
-                label: 'Of researchers struggle with discovery',
-                desc: 'Missing relevant work in their field',
+                animation: animations.unlink,
+                stat: '40%',
+                label: 'Of project time wasted on tool management',
+                desc: 'Inefficient workflows cost researchers',
               },
               {
-                icon: Users,
-                stat: '156 hrs',
-                label: 'Average time spent on literature review',
-                desc: 'Per research project',
+                animation: animations.time,
+                stat: '612 hrs',
+                label: 'Average time per systematic review',
+                desc: 'Months of fragmented work',
               },
             ].map((item, index) => (
               <motion.div
@@ -183,7 +271,18 @@ const ScholarSparkInvestorLandingPage: React.FC = () => {
                 }}
                 className="bg-gray-800/50 rounded-xl p-8 border border-[#8F8EDF]/20 hover:border-[#8F8EDF]/40 transition-all duration-300"
               >
-                <item.icon className="w-12 h-12 text-[#8F8EDF] mb-4" />
+                <div className="w-12 h-12 mb-4">
+                  {item.animation ? (
+                    <Lottie
+                      animationData={item.animation}
+                      loop={true}
+                      autoplay={true}
+                      style={{ width: '100%', height: '100%' }}
+                    />
+                  ) : (
+                    <div className="w-full h-full bg-gray-700 rounded animate-pulse" />
+                  )}
+                </div>
                 <div className="text-3xl font-bold text-white mb-2">{item.stat}</div>
                 <h3 className="text-lg font-semibold mb-2">{item.label}</h3>
                 <p className="text-gray-400">{item.desc}</p>
@@ -193,116 +292,146 @@ const ScholarSparkInvestorLandingPage: React.FC = () => {
         </div>
       </section>
 
-      {/* Solution Section */}
-      <section id="solution" className="py-20 px-6 bg-gray-800/30">
+      {/* Solution Section → Radial Orbital Timeline */}
+      <section id="solution" className="py-20 px-6" style={{ backgroundColor: '#0a090c' }}>
         <div className="max-w-6xl mx-auto">
           <motion.div
-            initial={{
-              opacity: 0,
-              y: 20,
-            }}
-            whileInView={{
-              opacity: 1,
-              y: 0,
-            }}
-            transition={{
-              duration: 0.8,
-            }}
-            viewport={{
-              once: true,
-            }}
-            className="text-center mb-16"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-6">Our AI-Powered Solution</h2>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              ScholarSpark leverages advanced AI to transform research discovery, analysis, and
-              synthesis into an intelligent, efficient process.
+              A unified, end-to-end research workflow centered on ScholarSpark.
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <motion.div
-              initial={{
-                opacity: 0,
-                x: -20,
-              }}
-              whileInView={{
-                opacity: 1,
-                x: 0,
-              }}
-              transition={{
-                duration: 0.8,
-              }}
-              viewport={{
-                once: true,
-              }}
-            >
-              <h3 className="text-2xl font-bold mb-6">Key Features</h3>
-              <div className="space-y-6">
-                {[
-                  {
-                    icon: Brain,
-                    title: 'Intelligent Discovery',
-                    desc: 'AI-powered semantic search across millions of papers',
-                  },
-                  {
-                    icon: Zap,
-                    title: 'Instant Synthesis',
-                    desc: 'Generate comprehensive literature reviews in minutes',
-                  },
-                  {
-                    icon: Globe,
-                    title: 'Knowledge Mapping',
-                    desc: 'Visualize research landscapes and identify gaps',
-                  },
-                  {
-                    icon: Star,
-                    title: 'Trend Analysis',
-                    desc: 'Predict emerging research directions and opportunities',
-                  },
-                ].map((feature, index) => (
-                  <div key={index} className="flex items-start space-x-4">
-                    <div className="w-12 h-12 bg-[#8F8EDF]/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <feature.icon className="w-6 h-6 text-[#8F8EDF]" />
-                    </div>
-                    <div>
-                      <h4 className="text-lg font-semibold mb-2">{feature.title}</h4>
-                      <p className="text-gray-400">{feature.desc}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{
-                opacity: 0,
-                x: 20,
-              }}
-              whileInView={{
-                opacity: 1,
-                x: 0,
-              }}
-              transition={{
-                duration: 0.8,
-              }}
-              viewport={{
-                once: true,
-              }}
-              className="bg-gradient-to-br from-[#8F8EDF]/10 to-pink-500/10 rounded-2xl p-8 border border-[#8F8EDF]/20"
-            >
-              <h3 className="text-2xl font-bold mb-4">Our Magic</h3>
-              <p className="text-gray-300 mb-6">
-                We combine large language models with proprietary knowledge graphs to understand
-                research context, relationships, and implications at unprecedented scale.
-              </p>
-              <div className="bg-gray-800/50 rounded-lg p-4">
-                <div className="text-sm text-[#8F8EDF] mb-2">Research Efficiency Improvement</div>
-                <div className="text-3xl font-bold text-white">10x Faster</div>
-                <div className="text-sm text-gray-400">Literature review completion time</div>
-              </div>
-            </motion.div>
-          </div>
+          {(() => {
+            const items: TimelineItem[] = [
+              // 1) Shallow Research
+              {
+                id: 1,
+                title: 'Shallow Research',
+                content:
+                  'Quickly survey literature to orient the team. Identify anchor papers and themes.',
+                status: 'in-progress',
+                energy: 78,
+                icon: Brain,
+              },
+              // 2) Set Objectives & Questions
+              {
+                id: 2,
+                title: 'Set Objectives & Questions',
+                content:
+                  'Define the problem, scope, and outcomes. Align on answerable research questions.',
+                status: 'pending',
+                energy: 60,
+                icon: ListChecks,
+                gemini: true,
+              },
+              // 3) Develop Protocol
+              {
+                id: 3,
+                title: 'Develop Protocol',
+                content:
+                  'Specify methods, sources, and criteria. Standardize process for reproducibility.',
+                status: 'pending',
+                energy: 58,
+                icon: FileCog,
+                gemini: true,
+              },
+              // 4) Search Strategy
+              {
+                id: 4,
+                title: 'Search Strategy',
+                content:
+                  'Design structured queries across databases. Balance recall and precision.',
+                status: 'pending',
+                energy: 62,
+                icon: Search,
+                gemini: true,
+              },
+              // 5) Study Collection & Deduplication
+              {
+                id: 5,
+                title: 'Study Collection & Deduplication',
+                content: 'Aggregate results from sources and remove duplicates automatically.',
+                status: 'pending',
+                energy: 55,
+                icon: Layers,
+                gemini: true,
+              },
+              // 6) Screening
+              {
+                id: 6,
+                title: 'Screening',
+                content:
+                  'Apply inclusion/exclusion rules at title, abstract, and full-text levels.',
+                status: 'pending',
+                energy: 52,
+                icon: Filter,
+              },
+              // 7) Quality Assessment
+              {
+                id: 7,
+                title: 'Quality Assessment',
+                content:
+                  'Assess rigor and bias using standardized rubrics. Build confidence in evidence.',
+                status: 'pending',
+                energy: 50,
+                icon: ShieldCheck,
+              },
+              // 8) Data Extraction
+              {
+                id: 8,
+                title: 'Data Extraction',
+                content: 'Capture variables, outcomes, and metadata in structured forms.',
+                status: 'pending',
+                energy: 54,
+                icon: Table,
+              },
+              // 9) Coding
+              {
+                id: 9,
+                title: 'Coding',
+                content: 'Label constructs and themes to turn text into analyzable signals.',
+                status: 'pending',
+                energy: 53,
+                icon: Code,
+              },
+              // 10) Protocol Documentation
+              {
+                id: 10,
+                title: 'Protocol Documentation',
+                content: 'Version, archive, and share protocols to ensure auditability.',
+                status: 'pending',
+                energy: 49,
+                icon: FileText,
+              },
+              // 11) Result Visualization
+              {
+                id: 11,
+                title: 'Result Visualization',
+                content: 'Reveal trends, gaps, and relationships with clear interactive charts.',
+                status: 'pending',
+                energy: 57,
+                icon: BarChart3,
+              },
+              // 12) Manuscript Writing
+              {
+                id: 12,
+                title: 'Manuscript Writing',
+                content: 'Compose structured narratives from extracted findings and visuals.',
+                status: 'pending',
+                energy: 51,
+                icon: FilePenLine,
+                gemini: true,
+              },
+            ];
+            return <RadialOrbitalTimeline items={items} radius={320} />;
+          })()}
         </div>
       </section>
 
@@ -336,20 +465,20 @@ const ScholarSparkInvestorLandingPage: React.FC = () => {
           <div className="grid md:grid-cols-4 gap-8 mb-12">
             {[
               {
-                metric: '500+',
-                label: 'Active Researchers',
+                metric: '9',
+                label: 'Researchers tested Prototype',
               },
               {
-                metric: '50K+',
-                label: 'Papers Analyzed',
+                metric: '161',
+                label: 'Researchers surveyed',
               },
               {
-                metric: '15',
-                label: 'Partner Universities',
+                metric: '100%',
+                label: 'Interest in an integrated tool',
               },
               {
-                metric: '92%',
-                label: 'User Satisfaction',
+                metric: '51.3%',
+                label: 'Conversion rate for beta sign-ups',
               },
             ].map((item, index) => (
               <motion.div
@@ -409,19 +538,19 @@ const ScholarSparkInvestorLandingPage: React.FC = () => {
           <div className="grid md:grid-cols-3 gap-8">
             {[
               {
-                size: '$12B',
+                size: '$1.6B USD',
                 label: 'Total Addressable Market',
                 desc: 'Academic research software globally',
               },
               {
-                size: '$2.8B',
+                size: '$560M AUD',
                 label: 'Serviceable Addressable Market',
                 desc: 'AI-powered research tools',
               },
               {
-                size: '$180M',
-                label: 'Serviceable Obtainable Market',
-                desc: 'Our 3-year target segment',
+                size: '$234K AUD',
+                label: 'Target ARR',
+                desc: 'Within 18 months',
               },
             ].map((market, index) => (
               <motion.div
