@@ -95,7 +95,7 @@ const ScholarSparkInvestorLandingPage: React.FC = () => {
     });
   };
   return (
-    <div className="min-h-screen bg-[#0a090c] text-white overflow-x-hidden">
+    <div className="min-h-screen bg-[#0a090c] text-white overflow-x-hidden" data-scroll-section>
       {/* Header */}
       <header className="fixed top-0 w-full z-50 p-2">
         <div className="container mx-auto">
@@ -205,7 +205,12 @@ const ScholarSparkInvestorLandingPage: React.FC = () => {
       <Hero />
 
       {/* Problem Section */}
-      <section id="problem" className="py-20 section-gradient px-6">
+      <section
+        id="problem"
+        className="py-20 section-gradient px-6"
+        data-scroll
+        data-scroll-speed="0.5"
+      >
         <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{
@@ -269,8 +274,18 @@ const ScholarSparkInvestorLandingPage: React.FC = () => {
                 viewport={{
                   once: true,
                 }}
-                className="bg-gray-800/50 rounded-xl p-8 border border-[#8F8EDF]/20 hover:border-[#8F8EDF]/40 transition-all duration-300"
+                className="relative border-2 border-transparent rounded-[45px] p-10 bg-gradient-to-br from-[#080509] via-[#1a171c] to-[#080509]"
+                style={{
+                  backgroundClip: 'padding-box',
+                }}
               >
+                {/* Gradient border using after pseudo-element */}
+                <div
+                  className="absolute -inset-px rounded-[45px] -z-10"
+                  style={{
+                    background: 'linear-gradient(71deg, #110e0e, #8F8EDF, #110e0e)',
+                  }}
+                ></div>
                 <div className="w-12 h-12 mb-4">
                   {item.animation ? (
                     <Lottie
@@ -283,9 +298,13 @@ const ScholarSparkInvestorLandingPage: React.FC = () => {
                     <div className="w-full h-full bg-gray-700 rounded animate-pulse" />
                   )}
                 </div>
-                <div className="text-3xl font-bold text-white mb-2">{item.stat}</div>
-                <h3 className="text-lg font-semibold mb-2">{item.label}</h3>
-                <p className="text-gray-400">{item.desc}</p>
+                <div className="text-3xl font-bold text-white mb-2 tracking-[-0.02em]">
+                  {item.stat}
+                </div>
+                <h3 className="text-lg font-semibold text-white mb-2 tracking-[-0.02em]">
+                  {item.label}
+                </h3>
+                <p className="text-white/50 font-semibold leading-8">{item.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -293,7 +312,13 @@ const ScholarSparkInvestorLandingPage: React.FC = () => {
       </section>
 
       {/* Solution Section → Radial Orbital Timeline */}
-      <section id="solution" className="py-20 px-6" style={{ backgroundColor: '#0a090c' }}>
+      <section
+        id="solution"
+        className="py-20 px-6"
+        style={{ backgroundColor: '#0a090c' }}
+        data-scroll
+        data-scroll-speed="0.3"
+      >
         <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -436,74 +461,99 @@ const ScholarSparkInvestorLandingPage: React.FC = () => {
       </section>
 
       {/* Traction Section */}
-      <section id="traction" className="py-20 px-6">
-        <div className="max-w-6xl mx-auto">
-          <motion.div
-            initial={{
-              opacity: 0,
-              y: 20,
-            }}
-            whileInView={{
-              opacity: 1,
-              y: 0,
-            }}
-            transition={{
-              duration: 0.8,
-            }}
-            viewport={{
-              once: true,
-            }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">Proven Traction</h2>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              Early validation from leading research institutions and rapid user adoption
-              demonstrate strong product-market fit.
-            </p>
-          </motion.div>
+      <section id="traction" className="py-20 px-6 relative">
+        <div className="absolute bottom-0 left-0 right-0 h-[400px] bg-gradient-to-t from-[rgba(88,80,236,0.08)] via-[rgba(88,80,236,0.04)] to-transparent rounded-t-full blur-3xl"></div>
+        <div className="max-w-7xl mx-auto relative z-10">
+          <div className="grid lg:grid-cols-3 gap-12 items-center">
+            {/* Left side - Compact Title, Description & CTA */}
+            <motion.div
+              initial={{
+                opacity: 0,
+                x: -20,
+              }}
+              whileInView={{
+                opacity: 1,
+                x: 0,
+              }}
+              transition={{
+                duration: 0.8,
+              }}
+              viewport={{
+                once: true,
+              }}
+              className="lg:col-span-1"
+            >
+              <h2 className="text-4xl md:text-5xl font-bold mb-4">Proven Traction</h2>
+              <p className="text-lg text-gray-300 mb-6 leading-relaxed">
+                Early validation from leading research institutions and rapid user adoption
+                demonstrate strong product-market fit.
+              </p>
+              <button className="bg-[#8F8EDF] hover:bg-[#8F8EDF]/90 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl">
+                View Case Studies
+              </button>
+            </motion.div>
 
-          <div className="grid md:grid-cols-4 gap-8 mb-12">
-            {[
-              {
-                metric: '9',
-                label: 'Researchers tested Prototype',
-              },
-              {
-                metric: '161',
-                label: 'Researchers surveyed',
-              },
-              {
-                metric: '100%',
-                label: 'Interest in an integrated tool',
-              },
-              {
-                metric: '51.3%',
-                label: 'Conversion rate for beta sign-ups',
-              },
-            ].map((item, index) => (
-              <motion.div
-                key={index}
-                initial={{
-                  opacity: 0,
-                  y: 20,
-                }}
-                whileInView={{
-                  opacity: 1,
-                  y: 0,
-                }}
-                transition={{
-                  duration: 0.8,
-                  delay: index * 0.1,
-                }}
-                viewport={{
-                  once: true,
-                }}
-                className="text-center"
-              >
-                <div className="text-4xl font-bold text-[#8F8EDF] mb-2">{item.metric}</div>
-                <div className="text-gray-300">{item.label}</div>
-              </motion.div>
-            ))}
+            {/* Right side - Stats Grid */}
+            <div className="lg:col-span-2 grid grid-cols-2 gap-6">
+              {[
+                {
+                  metric: '9',
+                  label: 'Researchers tested Prototype',
+                },
+                {
+                  metric: '161',
+                  label: 'Researchers surveyed',
+                },
+                {
+                  metric: '100%',
+                  label: 'Interest in an integrated tool',
+                },
+                {
+                  metric: '51.3%',
+                  label: 'Conversion rate for beta sign-ups',
+                },
+              ].map((item, index) => (
+                <motion.div
+                  key={index}
+                  initial={{
+                    opacity: 0,
+                    y: 20,
+                  }}
+                  whileInView={{
+                    opacity: 1,
+                    y: 0,
+                  }}
+                  transition={{
+                    duration: 0.8,
+                    delay: index * 0.1,
+                  }}
+                  viewport={{
+                    once: true,
+                  }}
+                  className="relative border-2 border-transparent rounded-[45px] px-4 py-12 bg-gradient-to-br from-[#080509] via-[#1a171c] to-[#080509] min-h-[160px]"
+                  style={{
+                    backgroundClip: 'padding-box',
+                  }}
+                >
+                  {/* Gradient border using after pseudo-element */}
+                  <div
+                    className="absolute -inset-px rounded-[45px] -z-10"
+                    style={{
+                      background: 'linear-gradient(71deg, #110e0e, #8F8EDF, #110e0e)',
+                    }}
+                  ></div>
+
+                  <div className="text-center flex flex-col justify-center h-full">
+                    <div className="text-4xl md:text-5xl font-bold text-white mb-3 tracking-[-0.02em]">
+                      {item.metric}
+                    </div>
+                    <div className="text-sm md:text-base text-white/70 font-medium leading-tight">
+                      {item.label}
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
