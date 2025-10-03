@@ -67,7 +67,7 @@ body {
 
 .hero-pattern {
   position: relative;
-  overflow: hidden;
+  overflow: visible;
 }
 
 #hero-svg-container {
@@ -269,7 +269,7 @@ body {
 
 .hero-pattern {
   position: relative;
-  overflow: hidden;
+  overflow: visible;
 }
 
 #hero-svg-container {
@@ -300,6 +300,29 @@ body {
 .rotl-node {
   z-index: 10;
 }
+
+.hero-device-frame {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  width: 120%;
+  transform: translateX(-50%);
+  height: auto;
+}
+
+.container-scroll-card {
+  transition: transform 0.1s ease-out;
+}
+
+.container-scroll-card[data-scroll] {
+  transform: rotateX(20deg) scale(1.05) translateY(-50px) !important;
+}
+
+.container-scroll-card[data-scroll].is-inview {
+  transform: rotateX(0deg) scale(1) translateY(0px) !important;
+}
+
+/* Problem section spacing handled by JavaScript */
 @keyframes pulse {
   0%,
   100% {
@@ -401,3 +424,36 @@ html.has-scroll-dragging {
   cursor: -webkit-grabbing;
   cursor: grabbing;
 }
+
+#hero-svg-container {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50%;
+  min-width: 900px;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 0;
+  opacity: 0.6;
+}
+
+@media (max-width: 1200px) {
+  #hero-svg-container {
+    min-width: 700px;
+  }
+}
+
+@media (max-width: 768px) {
+  #hero-svg-container {
+    min-width: 500px;
+  }
+}
+
+.content {
+  padding-top: 10vh;
+}
+
+/* Container Scroll Animation - handled by GSAP */

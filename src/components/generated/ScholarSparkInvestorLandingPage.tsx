@@ -1,5 +1,54 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useEffect, useState } from 'react';
+import { motion, useMotionValue, useTransform, useAnimation } from 'framer-motion';
+
+// CountUp component for animated numbers
+const CountUp = ({
+  end,
+  duration = 2,
+  delay = 0,
+}: {
+  end: number;
+  duration?: number;
+  delay?: number;
+}) => {
+  const [count, setCount] = useState(0);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.3 }
+    );
+
+    const element = document.querySelector(`[data-count="${end}"]`);
+    if (element) observer.observe(element);
+
+    return () => observer.disconnect();
+  }, [end]);
+
+  useEffect(() => {
+    if (!isVisible) return;
+
+    const timer = setTimeout(() => {
+      let startTime: number;
+      const animate = (currentTime: number) => {
+        if (!startTime) startTime = currentTime;
+        const progress = Math.min((currentTime - startTime) / (duration * 1000), 1);
+        setCount(Math.floor(progress * end));
+        if (progress < 1) requestAnimationFrame(animate);
+      };
+      requestAnimationFrame(animate);
+    }, delay * 1000);
+
+    return () => clearTimeout(timer);
+  }, [isVisible, end, duration, delay]);
+
+  return <span data-count={end}>{count}</span>;
+};
 import Lottie from 'lottie-react';
 import {
   ArrowRight,
@@ -30,6 +79,7 @@ import {
 import Hero from './HeroSection';
 import { useNavigate } from 'react-router-dom';
 import RadialOrbitalTimeline, { TimelineItem } from '../ui/RadialOrbitalTimeline';
+import { ContainerScroll } from '../ui/container-scroll-animation';
 // Lottie animations will be loaded dynamically
 
 const ScholarSparkInvestorLandingPage: React.FC = () => {
@@ -215,17 +265,20 @@ const ScholarSparkInvestorLandingPage: React.FC = () => {
           <motion.div
             initial={{
               opacity: 0,
-              y: 20,
+              y: 12,
             }}
             whileInView={{
               opacity: 1,
               y: 0,
             }}
             transition={{
-              duration: 0.8,
+              duration: 0.6,
+              ease: 'easeOut',
+              delay: 0.2,
             }}
             viewport={{
               once: true,
+              amount: 0.3,
             }}
             className="text-center mb-16"
           >
@@ -259,52 +312,52 @@ const ScholarSparkInvestorLandingPage: React.FC = () => {
             ].map((item, index) => (
               <motion.div
                 key={index}
-                initial={{
-                  opacity: 0,
-                  y: 20,
-                }}
-                whileInView={{
-                  opacity: 1,
-                  y: 0,
-                }}
+                initial={{ opacity: 0, y: 12 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 transition={{
-                  duration: 0.8,
-                  delay: index * 0.2,
+                  duration: 0.6,
+                  ease: 'easeOut',
+                  delay: 0.2 + index * 0.08,
                 }}
-                viewport={{
-                  once: true,
-                }}
+                viewport={{ once: true, amount: 0.3 }}
                 className="relative border-2 border-transparent rounded-[45px] p-10 bg-gradient-to-br from-[#080509] via-[#1a171c] to-[#080509]"
-                style={{
-                  backgroundClip: 'padding-box',
-                }}
+                style={{ backgroundClip: 'padding-box' }}
               >
                 {/* Gradient border using after pseudo-element */}
-                <div
+                <motion.div
                   className="absolute -inset-px rounded-[45px] -z-10"
                   style={{
                     background: 'linear-gradient(71deg, #110e0e, #8F8EDF, #110e0e)',
                   }}
-                ></div>
-                <div className="w-12 h-12 mb-4">
-                  {item.animation ? (
-                    <Lottie
-                      animationData={item.animation}
-                      loop={true}
-                      autoplay={true}
-                      style={{ width: '100%', height: '100%' }}
-                    />
-                  ) : (
-                    <div className="w-full h-full bg-gray-700 rounded animate-pulse" />
-                  )}
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  transition={{
+                    duration: 0.3,
+                    delay: 0.2 + index * 0.08 + 0.6, // After main card animation completes
+                  }}
+                  viewport={{ once: true, amount: 0.3 }}
+                ></motion.div>
+                <div className="w-full">
+                  <div className="w-12 h-12 mb-4">
+                    {item.animation ? (
+                      <Lottie
+                        animationData={item.animation}
+                        loop={true}
+                        autoplay={true}
+                        style={{ width: '100%', height: '100%' }}
+                      />
+                    ) : (
+                      <div className="w-full h-full bg-gray-700 rounded animate-pulse" />
+                    )}
+                  </div>
+                  <div className="text-3xl font-bold text-white mb-2 tracking-[-0.02em]">
+                    {item.stat}
+                  </div>
+                  <h3 className="text-lg font-semibold text-white mb-2 tracking-[-0.02em]">
+                    {item.label}
+                  </h3>
+                  <p className="text-white/50 font-semibold leading-8">{item.desc}</p>
                 </div>
-                <div className="text-3xl font-bold text-white mb-2 tracking-[-0.02em]">
-                  {item.stat}
-                </div>
-                <h3 className="text-lg font-semibold text-white mb-2 tracking-[-0.02em]">
-                  {item.label}
-                </h3>
-                <p className="text-white/50 font-semibold leading-8">{item.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -321,10 +374,14 @@ const ScholarSparkInvestorLandingPage: React.FC = () => {
       >
         <div className="max-w-6xl mx-auto">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
+            transition={{
+              duration: 0.6,
+              ease: 'easeOut',
+              delay: 0.2,
+            }}
+            viewport={{ once: true, amount: 0.3 }}
             className="text-center mb-12"
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-6">Our AI-Powered Solution</h2>
@@ -460,106 +517,70 @@ const ScholarSparkInvestorLandingPage: React.FC = () => {
         </div>
       </section>
 
-      {/* Traction Section */}
-      <section id="traction" className="py-20 px-6 relative">
-        <div className="absolute bottom-0 left-0 right-0 h-[400px] bg-gradient-to-t from-[rgba(88,80,236,0.08)] via-[rgba(88,80,236,0.04)] to-transparent rounded-t-full blur-3xl"></div>
-        <div className="max-w-7xl mx-auto relative z-10">
-          <div className="grid lg:grid-cols-3 gap-12 items-center">
-            {/* Left side - Compact Title, Description & CTA */}
-            <motion.div
-              initial={{
-                opacity: 0,
-                x: -20,
-              }}
-              whileInView={{
-                opacity: 1,
-                x: 0,
-              }}
-              transition={{
-                duration: 0.8,
-              }}
-              viewport={{
-                once: true,
-              }}
-              className="lg:col-span-1"
-            >
-              <h2 className="text-4xl md:text-5xl font-bold mb-4">Proven Traction</h2>
-              <p className="text-lg text-gray-300 mb-6 leading-relaxed">
-                Early validation from leading research institutions and rapid user adoption
-                demonstrate strong product-market fit.
-              </p>
-              <button className="bg-[#8F8EDF] hover:bg-[#8F8EDF]/90 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl">
-                View Case Studies
-              </button>
-            </motion.div>
+      {/* Trusted by experts • Used by the leaders */}
+      <section id="trusted" className="py-24 px-6 relative overflow-hidden">
+        <div className="max-w-6xl mx-auto">
+          <motion.div
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{
+              duration: 0.6,
+              ease: 'easeOut',
+              delay: 0.2,
+            }}
+            viewport={{ once: true, amount: 0.3 }}
+          >
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">Proven Traction</h2>
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+              Early validation from leading research institutions and rapid user adoption
+              demonstrate strong product-market fit.
+            </p>
+          </motion.div>
 
-            {/* Right side - Stats Grid */}
-            <div className="lg:col-span-2 grid grid-cols-2 gap-6">
-              {[
-                {
-                  metric: '9',
-                  label: 'Researchers tested Prototype',
-                },
-                {
-                  metric: '161',
-                  label: 'Researchers surveyed',
-                },
-                {
-                  metric: '100%',
-                  label: 'Interest in an integrated tool',
-                },
-                {
-                  metric: '51.3%',
-                  label: 'Conversion rate for beta sign-ups',
-                },
-              ].map((item, index) => (
-                <motion.div
-                  key={index}
-                  initial={{
-                    opacity: 0,
-                    y: 20,
-                  }}
-                  whileInView={{
-                    opacity: 1,
-                    y: 0,
-                  }}
-                  transition={{
-                    duration: 0.8,
-                    delay: index * 0.1,
-                  }}
-                  viewport={{
-                    once: true,
-                  }}
-                  className="relative border-2 border-transparent rounded-[45px] px-4 py-12 bg-gradient-to-br from-[#080509] via-[#1a171c] to-[#080509] min-h-[160px]"
-                  style={{
-                    backgroundClip: 'padding-box',
-                  }}
-                >
-                  {/* Gradient border using after pseudo-element */}
-                  <div
-                    className="absolute -inset-px rounded-[45px] -z-10"
-                    style={{
-                      background: 'linear-gradient(71deg, #110e0e, #8F8EDF, #110e0e)',
-                    }}
-                  ></div>
-
-                  <div className="text-center flex flex-col justify-center h-full">
-                    <div className="text-4xl md:text-5xl font-bold text-white mb-3 tracking-[-0.02em]">
-                      {item.metric}
-                    </div>
-                    <div className="text-sm md:text-base text-white/70 font-medium leading-tight">
-                      {item.label}
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
+          <div className="mt-[100px] grid grid-cols-4 gap-8 text-white/90">
+            {[
+              { metric: 9, label: 'Researchers tested Prototype', suffix: '' },
+              { metric: 161, label: 'Researchers surveyed', suffix: '' },
+              { metric: 100, label: 'Interest in an integrated tool', suffix: '%' },
+              { metric: 51.3, label: 'Conversion rate for beta sign-ups', suffix: '%' },
+            ].map((s, i) => (
+              <motion.div
+                key={i}
+                className="text-center"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{
+                  duration: 0.6,
+                  ease: 'easeOut',
+                  delay: 0.4 + i * 0.1,
+                }}
+                viewport={{ once: true, amount: 0.3 }}
+              >
+                <div className="text-4xl md:text-5xl font-medium text-white mb-2">
+                  <CountUp end={s.metric} duration={1} delay={0.2 + i * 0.1} />
+                  {s.suffix}
+                </div>
+                <div className="text-gray-300">{s.label}</div>
+              </motion.div>
+            ))}
           </div>
+        </div>
+
+        {/* Background glow + horizon (no particles) */}
+        <div className="relative -mt-24 h-96 w-full overflow-hidden [mask-image:radial-gradient(50%_50%,white,transparent)]">
+          <div
+            className="absolute inset-0 opacity-40"
+            style={{
+              background: 'radial-gradient(circle at center bottom, #514ebf 0%, #7e7cd300 70%)',
+            }}
+          />
+          <div className="absolute -left-1/2 top-1/2 aspect-[1/0.7] z-10 w-[200%] rounded-[100%] border-t border-white/10 bg-[#0a090c]" />
         </div>
       </section>
 
       {/* Market Opportunity */}
-      <section className="py-20 px-6 bg-gray-800/30">
+      <section className="pb-20 px-6 bg-transparent -mt-32">
         <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{
@@ -585,49 +606,92 @@ const ScholarSparkInvestorLandingPage: React.FC = () => {
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              {
-                size: '$1.6B USD',
-                label: 'Total Addressable Market',
-                desc: 'Academic research software globally',
-              },
-              {
-                size: '$560M AUD',
-                label: 'Serviceable Addressable Market',
-                desc: 'AI-powered research tools',
-              },
-              {
-                size: '$234K AUD',
-                label: 'Target ARR',
-                desc: 'Within 18 months',
-              },
-            ].map((market, index) => (
+          {/* Triple Circles with "Research Crisis" card styling */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="flex items-center justify-center py-6"
+          >
+            {/* Left (SAM) */}
+            <div
+              className="relative border-2 border-transparent rounded-full p-8 sm:w-56 sm:h-56 md:w-64 md:h-64 bg-gradient-to-br from-[#080509] via-[#1a171c] to-[#080509] -mr-6 sm:-mr-8 md:-mr-12"
+              style={{ backgroundClip: 'padding-box' }}
+            >
+              <div
+                className="absolute -inset-px rounded-full -z-10"
+                style={{ background: 'linear-gradient(71deg, #110e0e, #8F8EDF, #110e0e)' }}
+              ></div>
               <motion.div
-                key={index}
-                initial={{
-                  opacity: 0,
-                  y: 20,
-                }}
-                whileInView={{
-                  opacity: 1,
-                  y: 0,
-                }}
-                transition={{
-                  duration: 0.8,
-                  delay: index * 0.2,
-                }}
-                viewport={{
-                  once: true,
-                }}
-                className="bg-gray-800/50 rounded-xl p-8 border border-[#8F8EDF]/20 text-center"
+                initial={{ opacity: 0, y: 12, scale: 0.98 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+                viewport={{ once: true }}
+                className="text-center flex flex-col items-center justify-center h-full px-4"
               >
-                <div className="text-4xl font-bold text-[#8F8EDF] mb-4">{market.size}</div>
-                <h3 className="text-xl font-semibold mb-2">{market.label}</h3>
-                <p className="text-gray-400">{market.desc}</p>
+                <div className="text-2xl md:text-3xl font-bold text-white mb-2 tracking-[-0.02em]">
+                  $560M AUD
+                </div>
+                <div className="text-xs md:text-sm text-white/70 font-medium leading-tight">
+                  Serviceable Addressable Market
+                </div>
               </motion.div>
-            ))}
-          </div>
+            </div>
+
+            {/* Center (TAM) */}
+            <div
+              className="relative border-2 border-transparent rounded-full p-10 sm:w-64 sm:h-64 md:w-80 md:h-80 bg-gradient-to-br from-[#080509] via-[#1a171c] to-[#080509] -mr-6 sm:-mr-8 md:-mr-12"
+              style={{ backgroundClip: 'padding-box' }}
+            >
+              <div
+                className="absolute -inset-px rounded-full -z-10"
+                style={{ background: 'linear-gradient(71deg, #110e0e, #8F8EDF, #110e0e)' }}
+              ></div>
+              <motion.div
+                initial={{ opacity: 0, y: 12, scale: 0.98 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                viewport={{ once: true }}
+                className="text-center flex flex-col items-center justify-center h-full px-6"
+              >
+                <div className="text-3xl md:text-4xl font-bold text-white mb-2 tracking-[-0.02em]">
+                  $1.6B USD
+                </div>
+                <div className="text-sm md:text-base text-white/80 font-semibold leading-tight">
+                  Total Addressable Market
+                </div>
+                <div className="text-xs md:text-sm text-white/60 mt-2">
+                  Academic research software globally
+                </div>
+              </motion.div>
+            </div>
+
+            {/* Right (Target ARR) */}
+            <div
+              className="relative border-2 border-transparent rounded-full p-8 sm:w-56 sm:h-56 md:w-64 md:h-64 bg-gradient-to-br from-[#080509] via-[#1a171c] to-[#080509]"
+              style={{ backgroundClip: 'padding-box' }}
+            >
+              <div
+                className="absolute -inset-px rounded-full -z-10"
+                style={{ background: 'linear-gradient(71deg, #110e0e, #8F8EDF, #110e0e)' }}
+              ></div>
+              <motion.div
+                initial={{ opacity: 0, y: 12, scale: 0.98 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                viewport={{ once: true }}
+                className="text-center flex flex-col items-center justify-center h-full px-4"
+              >
+                <div className="text-2xl md:text-3xl font-bold text-white mb-2 tracking-[-0.02em]">
+                  $234K AUD
+                </div>
+                <div className="text-xs md:text-sm text-white/70 font-medium leading-tight">
+                  Target ARR (18 months)
+                </div>
+              </motion.div>
+            </div>
+          </motion.div>
         </div>
       </section>
 
