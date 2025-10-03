@@ -4,7 +4,7 @@ import { gsap } from 'gsap';
 
 export const ContainerScroll = ({ children }: { children: React.ReactNode }) => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const cardRef = useRef<HTMLDivElement>(null);
+  const cardRef = useRef<HTMLDivElement>(null!);
 
   useEffect(() => {
     // Set initial state
@@ -109,7 +109,7 @@ export const Card = ({
   cardRef,
   children,
 }: {
-  cardRef: React.RefObject<HTMLDivElement | null>;
+  cardRef: React.RefObject<HTMLDivElement>;
   children: React.ReactNode;
 }) => {
   return (
