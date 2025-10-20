@@ -186,7 +186,7 @@ const ScholarSparkInvestorLandingPage: React.FC = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Left side - Text content */}
             <motion.div
-              className="space-y-6"
+              className="space-y-6 text-center md:text-left"
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, amount: 0.3 }}
@@ -229,7 +229,7 @@ const ScholarSparkInvestorLandingPage: React.FC = () => {
                 ~ Pouya Ataei 2025
               </motion.p>
               <motion.div
-                className="pt-4"
+                className="pt-4 flex justify-center md:justify-start"
                 variants={{
                   hidden: { opacity: 0, y: 18 },
                   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } },
@@ -388,7 +388,7 @@ const ScholarSparkInvestorLandingPage: React.FC = () => {
               delay: 0.2,
             }}
             viewport={{ once: true, amount: 0.3 }}
-            className="text-center mb-12"
+            className="text-center mb-0 md:mb-12"
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-6">Our AI-Powered Solution</h2>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
@@ -524,7 +524,10 @@ const ScholarSparkInvestorLandingPage: React.FC = () => {
       </section>
 
       {/* Trusted by experts • Used by the leaders */}
-      <section id="trusted" className="py-24 px-6 sm:px-10 md:px-6 relative overflow-visible">
+      <section
+        id="trusted"
+        className="pt-12 md:pt-24 pb-12 md:pb-24 px-6 sm:px-10 md:px-6 relative overflow-visible"
+      >
         <div className="max-w-6xl mx-auto">
           <motion.div
             className="text-center mb-16"
@@ -768,12 +771,14 @@ const ScholarSparkInvestorLandingPage: React.FC = () => {
             </p>
 
             <GradientButton
-              onClick={handleCTAClick}
-              className="px-10 py-5 text-xl flex items-center space-x-3 mx-auto group mb-8"
+              asChild
+              className="px-10 py-5 text-xl flex items-center space-x-3 mx-auto group mb-8 w-max"
             >
-              <Mail className="w-6 h-6" />
-              <span>Request Investor Deck</span>
-              <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
+              <a href="/pdf/pitchDeck.pdf" download="ScholarSpark-Investor-Deck.pdf">
+                <Mail className="w-6 h-6" />
+                <span>Request Investor Deck</span>
+                <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
+              </a>
             </GradientButton>
 
             <div className="text-gray-400">

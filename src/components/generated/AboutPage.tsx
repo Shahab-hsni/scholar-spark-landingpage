@@ -6,6 +6,8 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { GradientButton } from '../ui/GradientButton';
 import Header from '../ui/Header';
+import { motion } from 'framer-motion';
+import { Mail, ArrowRight } from 'lucide-react';
 
 // SVG component for the background pattern in the "Our Vision" section.
 const VisionPatternSVG = () => (
@@ -325,19 +327,69 @@ const AboutPage = () => {
           </div>
         </section>
 
-        <section className="py-20 px-6 sm:px-10 md:px-6 section-gradient">
-          <div className="max-w-6xl mx-auto text-center">
-            <div className="max-w-3xl mx-auto">
-              <h2 className="text-4xl md:text-5xl font-bold mb-6">Join the Research Revolution</h2>
-              <p className="text-xl text-gray-300 mb-8">
-                Whether you're a researcher looking to accelerate your work, an investor interested
-                in the future of AI-powered research, or a partner wanting to collaborate, we'd love
-                to hear from you.
+        {/* Investment CTA */}
+        <section className="py-20 px-6 sm:px-10 md:px-6 relative overflow-visible">
+          {/* Circle background */}
+          <div
+            className="absolute"
+            style={{
+              width: '400px',
+              height: '400px',
+              borderRadius: '820px',
+              background: 'linear-gradient(180deg, #6f6dd5 0%, rgba(79, 26, 214, 0.46) 100%)',
+              filter: 'blur(100px)',
+              opacity: 0.6,
+              top: '50%',
+              left: '50%',
+              transform: 'translate(-50%, -50%)',
+            }}
+          />
+
+          {/* Content */}
+          <div className="max-w-4xl mx-auto text-center relative z-10">
+            <motion.div
+              initial={{
+                opacity: 0,
+                y: 20,
+              }}
+              whileInView={{
+                opacity: 1,
+                y: 0,
+              }}
+              transition={{
+                duration: 0.8,
+              }}
+              viewport={{
+                once: true,
+              }}
+            >
+              <h2 className="text-4xl md:text-5xl font-bold mb-6">Join Our Mission</h2>
+              <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+                We're raising $2M in pre-seed funding to accelerate product development and expand
+                our research partnerships. Join us in revolutionizing academic research.
               </p>
-              <GradientButton asChild>
-                <a href="#">Get in Touch</a>
+
+              <GradientButton
+                asChild
+                className="px-10 py-5 text-xl flex items-center space-x-3 mx-auto group mb-8 w-max"
+              >
+                <a href="/pdf/pitchDeck.pdf" download="ScholarSpark-Investor-Deck.pdf">
+                  <Mail className="w-6 h-6" />
+                  <span>Request Investor Deck</span>
+                  <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
+                </a>
               </GradientButton>
-            </div>
+
+              <div className="text-gray-400">
+                <p className="mb-2">Direct Contact:</p>
+                <a
+                  href="mailto:pouya.ataei@scholarspark.ai"
+                  className="text-[#8F8EDF] hover:text-[#7A79C9] transition-colors"
+                >
+                  pouya.ataei@scholarspark.ai
+                </a>
+              </div>
+            </motion.div>
           </div>
         </section>
       </main>

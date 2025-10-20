@@ -502,7 +502,9 @@ const Hero = () => {
                 }}
               >
                 <GradientButton asChild className="py-4 px-10 text-lg">
-                  <a href="#cta">Request Investor Deck</a>
+                  <a href="/pdf/pitchDeck.pdf" download="ScholarSpark-Investor-Deck.pdf">
+                    Request Investor Deck
+                  </a>
                 </GradientButton>
               </motion.div>
               <motion.div

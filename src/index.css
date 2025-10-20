@@ -431,9 +431,9 @@ html.has-scroll-dragging {
 
 #hero-svg-container {
   position: absolute;
-  top: 0;
+  top: 50%;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translate(-50%, -50%);
   width: 50%;
   min-width: 900px;
   height: auto;
@@ -442,6 +442,13 @@ html.has-scroll-dragging {
   justify-content: center;
   z-index: 0;
   opacity: 0.6;
+}
+
+@media (min-width: 768px) {
+  #hero-svg-container {
+    top: 0;
+    transform: translate(-50%, 0);
+  }
 }
 
 @media (max-width: 1200px) {
