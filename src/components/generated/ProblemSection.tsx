@@ -61,7 +61,10 @@ const ProblemSection: React.FC = () => {
     },
   ] as any[];
   return (
-    <section id="problem" className="py-24 px-6 bg-gradient-to-b from-gray-900 to-gray-800">
+    <section
+      id="problem"
+      className="py-24 px-6 sm:px-10 md:px-6 bg-gradient-to-b from-gray-900 to-gray-800"
+    >
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <motion.div

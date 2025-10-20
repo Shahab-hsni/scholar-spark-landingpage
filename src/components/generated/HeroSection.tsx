@@ -5,6 +5,7 @@
 import React, { useRef, useEffect, useId } from 'react';
 import { motion } from 'framer-motion';
 import { ContainerScroll } from '../ui/container-scroll-animation';
+import { GradientButton } from '../ui/GradientButton';
 
 // The main SVG component for the interactive background.
 // It contains two layers: a base (dark gray) and a highlight (purple) revealed by a mask.
@@ -454,7 +455,7 @@ const Hero = () => {
       <main className="hero-gradient hero-pattern" ref={heroRef}>
         <MetatronCubeSVG />
         <div className="hero-content">
-          <section className="container mx-auto px-4 h-screen flex items-center justify-center text-center">
+          <section className="container mx-auto px-4 sm:px-10 md:px-6 h-screen flex items-center justify-center text-center">
             <motion.div
               className="max-w-4xl mx-auto content"
               initial="hidden"
@@ -500,12 +501,9 @@ const Hero = () => {
                   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } },
                 }}
               >
-                <a
-                  href="#cta"
-                  className="bg-[#8F8EDF] text-white font-bold py-4 px-10 rounded-lg text-lg hover:bg-[#7A79C9] transition-all duration-300 glow-button"
-                >
-                  Request Investor Deck
-                </a>
+                <GradientButton asChild className="py-4 px-10 text-lg">
+                  <a href="#cta">Request Investor Deck</a>
+                </GradientButton>
               </motion.div>
               <motion.div
                 className="mt-12 text-sm text-gray-400"
@@ -517,7 +515,7 @@ const Hero = () => {
                 Founded by Dr. Pouya Ataei, PhD & Validated by 161+ Researchers
               </motion.div>
               <div style={{ height: '100px', position: 'relative' }}>
-                <div className="hero-device-frame">
+                <div className="hero-device-frame hidden lg:block">
                   <ContainerScroll>
                     <div className="w-full h-full bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900 flex items-center justify-center">
                       <div className="text-center text-white">

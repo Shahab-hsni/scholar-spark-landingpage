@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { motion, useMotionValue, useTransform, useAnimation } from 'framer-motion';
+import DarkVeil from '../ui/DarkVeil';
+import SectionTeam from '../ui/SectionTeam';
+import Header from '../ui/Header';
 
 // CountUp component for animated numbers
 const CountUp = ({
@@ -77,6 +80,7 @@ import {
   Clock,
 } from 'lucide-react';
 import Hero from './HeroSection';
+import { GradientButton } from '../ui/GradientButton';
 import { useNavigate } from 'react-router-dom';
 import RadialOrbitalTimeline, { TimelineItem } from '../ui/RadialOrbitalTimeline';
 import { ContainerScroll } from '../ui/container-scroll-animation';
@@ -95,6 +99,16 @@ const ScholarSparkInvestorLandingPage: React.FC = () => {
     time: null,
     multiCluster: null,
   });
+
+  // Shared fade-up variants for staggered children
+  const fadeUp = {
+    hidden: { opacity: 0, y: 16 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, ease: 'easeOut' },
+    },
+  } as const;
 
   // Load Lottie animations
   React.useEffect(() => {
@@ -147,121 +161,113 @@ const ScholarSparkInvestorLandingPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-[#0a090c] text-white overflow-x-hidden" data-scroll-section>
       {/* Header */}
-      <header className="fixed top-0 w-full z-50 p-2">
-        <div className="container mx-auto">
-          <div className="bg-[#1A1A1A]/80 backdrop-blur-md border border-gray-600/50 rounded-lg p-2 flex items-center justify-center gap-3 w-max mx-auto shadow-lg">
-            {/* Home - Active State */}
-            <div className="bg-[#2A2A2A] border border-gray-500 rounded-lg px-3 py-1.5 flex items-center space-x-2">
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M3 9L12 2L21 9V20C21 20.5304 20.7893 21.0391 20.4142 21.4142C20.0391 21.7893 19.5304 22 19 22H5C4.46957 22 3.96086 21.7893 3.58579 21.4142C3.21071 21.0391 3 20.5304 3 20V9Z"
-                  stroke="white"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-                <path
-                  d="M9 22V12H15V22"
-                  stroke="white"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-              <span className="text-white font-medium text-sm">Home</span>
-            </div>
-
-            {/* About - Clickable */}
-            <button
-              onClick={() => navigate('/about')}
-              className="text-white font-medium text-sm px-3 py-1.5 hover:bg-[#2A2A2A] hover:border hover:border-gray-500 rounded-lg transition-all duration-200 flex items-center space-x-2"
-            >
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2ZM21 9V7L15 1H5C3.89 1 3 1.89 3 3V21C3 22.11 3.89 23 5 23H19C20.11 23 21 22.11 21 21V9ZM19 21H5V3H13V9H19V21Z"
-                  stroke="white"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-              <span>About</span>
-            </button>
-
-            {/* Preview app - Inactive State */}
-            <div className="text-white font-medium px-3 py-1.5 flex items-center space-x-2">
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M14 2H6C5.46957 2 4.96086 2.21071 4.58579 2.58579C4.21071 2.96086 4 3.46957 4 4V20C4 20.5304 4.21071 21.0391 4.58579 21.4142C4.96086 21.7893 5.46957 22 6 22H18C18.5304 22 19.0391 21.7893 19.4142 21.4142C19.7893 21.0391 20 20.5304 20 20V8L14 2Z"
-                  stroke="white"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-                <path
-                  d="M14 2V8H20"
-                  stroke="white"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-                <path
-                  d="M16 13H8"
-                  stroke="white"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-                <path
-                  d="M16 17H8"
-                  stroke="white"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-                <path
-                  d="M10 9H9H8"
-                  stroke="white"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-              <span className="text-sm">Preview app</span>
-            </div>
-          </div>
-        </div>
-      </header>
+      <Header />
 
       {/* Hero Section */}
       <Hero />
 
+      {/* About Us Section */}
+      <section className="py-20 px-6 sm:px-10 md:px-6 relative">
+        <div
+          className="absolute glow"
+          style={{
+            width: '500px',
+            height: '500px',
+            borderRadius: '820px',
+            background: 'radial-gradient(circle at center, #6f6dd5 0%, rgba(129,128,208,0) 60%)',
+            filter: 'blur(100px)',
+            opacity: 0.3,
+            top: '20%',
+            left: '30%',
+            zIndex: -1,
+          }}
+        />
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* Left side - Text content */}
+            <motion.div
+              className="space-y-6"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ staggerChildren: 0.08, delayChildren: 0.2 }}
+              variants={{
+                hidden: {},
+                visible: { transition: { staggerChildren: 0.08, delayChildren: 0.2 } },
+              }}
+            >
+              <motion.h2
+                className="text-4xl md:text-5xl font-bold text-white mb-6"
+                variants={{
+                  hidden: { opacity: 0, y: 14 },
+                  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } },
+                }}
+              >
+                A product by Neomycelia.
+              </motion.h2>
+              <motion.p
+                className="text-xl text-gray-300 leading-relaxed"
+                variants={{
+                  hidden: { opacity: 0, y: 16 },
+                  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } },
+                }}
+              >
+                "In the vast forest of human knowledge, beneath the visible canopy of published
+                research, lies an intricate network of connections—a mycelial web binding together
+                the collective wisdom of humanity's brightest minds. Just as fungi form the hidden
+                intelligence of forests, transmitting nutrients and information across seemingly
+                disparate organisms, Neomycelia emerges as the connective tissue of academic
+                exploration—a catalyst for scientific revolution."
+              </motion.p>
+              <motion.p
+                className="text-lg text-gray-400 italic"
+                variants={{
+                  hidden: { opacity: 0, y: 16 },
+                  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } },
+                }}
+              >
+                ~ Pouya Ataei 2025
+              </motion.p>
+              <motion.div
+                className="pt-4"
+                variants={{
+                  hidden: { opacity: 0, y: 18 },
+                  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } },
+                }}
+              >
+                <GradientButton asChild>
+                  <a href="/about">Learn More</a>
+                </GradientButton>
+              </motion.div>
+            </motion.div>
+
+            {/* Right side - Logo */}
+            <motion.div
+              className="flex justify-center lg:justify-end"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ staggerChildren: 0.08, delayChildren: 0.3 }}
+            >
+              <motion.img
+                variants={fadeUp}
+                src="/logos/Logo-v2.png"
+                alt="Neomycelia Logo"
+                className="max-w-full h-auto"
+              />
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
       {/* Problem Section */}
       <section
         id="problem"
-        className="py-20 section-gradient px-6"
+        className="py-20 section-gradient px-6 sm:px-10 md:px-6"
         data-scroll
         data-scroll-speed="0.5"
       >
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{
               opacity: 0,
@@ -289,7 +295,7 @@ const ScholarSparkInvestorLandingPage: React.FC = () => {
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-4 lg:gap-8">
             {[
               {
                 animation: animations.multiCluster,
@@ -320,7 +326,7 @@ const ScholarSparkInvestorLandingPage: React.FC = () => {
                   delay: 0.2 + index * 0.08,
                 }}
                 viewport={{ once: true, amount: 0.3 }}
-                className="relative border-2 border-transparent rounded-[45px] p-10 bg-gradient-to-br from-[#080509] via-[#1a171c] to-[#080509]"
+                className="relative border-2 border-transparent rounded-[45px] p-8 md:p-5 lg:p-10 bg-gradient-to-br from-[#080509] via-[#1a171c] to-[#080509]"
                 style={{ backgroundClip: 'padding-box' }}
               >
                 {/* Gradient border using after pseudo-element */}
@@ -356,7 +362,7 @@ const ScholarSparkInvestorLandingPage: React.FC = () => {
                   <h3 className="text-lg font-semibold text-white mb-2 tracking-[-0.02em]">
                     {item.label}
                   </h3>
-                  <p className="text-white/50 font-semibold leading-8">{item.desc}</p>
+                  <p className="text-white/50 font-semibold leading-5 ">{item.desc}</p>
                 </div>
               </motion.div>
             ))}
@@ -518,7 +524,7 @@ const ScholarSparkInvestorLandingPage: React.FC = () => {
       </section>
 
       {/* Trusted by experts • Used by the leaders */}
-      <section id="trusted" className="py-24 px-6 relative overflow-hidden">
+      <section id="trusted" className="py-24 px-6 sm:px-10 md:px-6 relative overflow-visible">
         <div className="max-w-6xl mx-auto">
           <motion.div
             className="text-center mb-16"
@@ -572,7 +578,8 @@ const ScholarSparkInvestorLandingPage: React.FC = () => {
           <div
             className="absolute inset-0 opacity-40"
             style={{
-              background: 'radial-gradient(circle at center bottom, #514ebf 0%, #7e7cd300 70%)',
+              background:
+                'radial-gradient(circle at center bottom, #6f6dd5 0%, rgba(79, 26, 214, 0) 70%)',
             }}
           />
           <div className="absolute -left-1/2 top-1/2 aspect-[1/0.7] z-10 w-[200%] rounded-[100%] border-t border-white/10 bg-[#0a090c]" />
@@ -580,7 +587,7 @@ const ScholarSparkInvestorLandingPage: React.FC = () => {
       </section>
 
       {/* Market Opportunity */}
-      <section className="pb-20 px-6 bg-transparent -mt-32">
+      <section className="pb-8 px-6 sm:px-10 md:px-6 bg-transparent -mt-32">
         <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{
@@ -612,11 +619,11 @@ const ScholarSparkInvestorLandingPage: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="flex items-center justify-center py-6"
+            className="opportunity-grid flex flex-col items-center justify-center py-6 sm:flex-row"
           >
             {/* Left (SAM) */}
             <div
-              className="relative border-2 border-transparent rounded-full p-8 sm:w-56 sm:h-56 md:w-64 md:h-64 bg-gradient-to-br from-[#080509] via-[#1a171c] to-[#080509] -mr-6 sm:-mr-8 md:-mr-12"
+              className="relative border-2 border-transparent rounded-full p-6 md:p-10 w-72 h-72 sm:w-56 sm:h-56  aspect-square md:w-full md:h-auto lg:w-64 lg:h-64 bg-gradient-to-br from-[#080509] via-[#1a171c] to-[#080509] mr-0 sm:-mr-8 md:-mr-12"
               style={{ backgroundClip: 'padding-box' }}
             >
               <div
@@ -641,7 +648,7 @@ const ScholarSparkInvestorLandingPage: React.FC = () => {
 
             {/* Center (TAM) */}
             <div
-              className="relative border-2 border-transparent rounded-full p-10 sm:w-64 sm:h-64 md:w-80 md:h-80 bg-gradient-to-br from-[#080509] via-[#1a171c] to-[#080509] -mr-6 sm:-mr-8 md:-mr-12"
+              className="relative border-2 border-transparent aspect-square rounded-full p-6 md:p-10 w-72 h-72 sm:w-56 sm:h-56 md:w-full md:h-auto lg:w-80 lg:h-80 bg-gradient-to-br from-[#080509] via-[#1a171c] to-[#080509] mr-0 sm:-mr-8 md:-mr-12"
               style={{ backgroundClip: 'padding-box' }}
             >
               <div
@@ -669,7 +676,7 @@ const ScholarSparkInvestorLandingPage: React.FC = () => {
 
             {/* Right (Target ARR) */}
             <div
-              className="relative border-2 border-transparent rounded-full p-8 sm:w-56 sm:h-56 md:w-64 md:h-64 bg-gradient-to-br from-[#080509] via-[#1a171c] to-[#080509]"
+              className="relative border-2 border-transparent rounded-full aspect-square p-6 w-72 h-72 md:p-10 sm:w-56 sm:h-56 md:w-full md:h-auto lg:w-64 lg:h-64 bg-gradient-to-br from-[#080509] via-[#1a171c] to-[#080509]"
               style={{ backgroundClip: 'padding-box' }}
             >
               <div
@@ -696,83 +703,48 @@ const ScholarSparkInvestorLandingPage: React.FC = () => {
       </section>
 
       {/* Team Section */}
-      <section id="team" className="py-20 px-6">
+      <section id="team" className="pt-8 pb-8 px-6 sm:px-10 md:px-6 relative overflow-hidden">
         <div className="max-w-6xl mx-auto">
-          <motion.div
-            initial={{
-              opacity: 0,
-              y: 20,
-            }}
-            whileInView={{
-              opacity: 1,
-              y: 0,
-            }}
-            transition={{
-              duration: 0.8,
-            }}
-            viewport={{
-              once: true,
-            }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">World-Class Team</h2>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              Led by experienced founders with deep expertise in AI, academic research, and
-              enterprise software.
-            </p>
-          </motion.div>
-
-          <motion.div
-            initial={{
-              opacity: 0,
-              y: 20,
-            }}
-            whileInView={{
-              opacity: 1,
-              y: 0,
-            }}
-            transition={{
-              duration: 0.8,
-            }}
-            viewport={{
-              once: true,
-            }}
-            className="bg-gray-800/50 rounded-2xl p-8 border border-[#8F8EDF]/20 max-w-4xl mx-auto"
-          >
-            <div className="text-center mb-8">
-              <div className="w-24 h-24 bg-gradient-to-br from-[#8F8EDF] to-pink-500 rounded-full mx-auto mb-4 flex items-center justify-center">
-                <span className="text-2xl font-bold text-white">PA</span>
-              </div>
-              <h3 className="text-2xl font-bold mb-2">Pouya Ataei</h3>
-              <p className="text-[#8F8EDF] mb-4">Founder & CEO</p>
-              <p className="text-gray-300 max-w-2xl mx-auto">
-                Former AI Research Scientist with 10+ years in machine learning and NLP. PhD in
-                Computer Science from Stanford. Previously led AI initiatives at Google Research and
-                published 50+ peer-reviewed papers.
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-3 gap-6 text-center">
-              <div>
-                <div className="text-2xl font-bold text-[#8F8EDF] mb-2">10+</div>
-                <div className="text-sm text-gray-400">Years AI Experience</div>
-              </div>
-              <div>
-                <div className="text-2xl font-bold text-[#8F8EDF] mb-2">50+</div>
-                <div className="text-sm text-gray-400">Published Papers</div>
-              </div>
-              <div>
-                <div className="text-2xl font-bold text-[#8F8EDF] mb-2">$2M+</div>
-                <div className="text-sm text-gray-400">Previous Exit Value</div>
-              </div>
-            </div>
-          </motion.div>
+          <div className="w-full">
+            {/* Replaced with SectionTeam per request */}
+            <SectionTeam />
+          </div>
         </div>
       </section>
 
       {/* Investment CTA */}
-      <section className="py-20 px-6 bg-gradient-to-r from-[#8F8EDF]/20 to-pink-900/20">
-        <div className="max-w-4xl mx-auto text-center">
+      <section className="py-20 px-6 sm:px-10 md:px-6 relative overflow-visible">
+        {/* Circle background */}
+        <div
+          className="absolute"
+          style={{
+            width: '400px',
+            height: '400px',
+            borderRadius: '820px',
+            background: 'linear-gradient(180deg, #6f6dd5 0%, rgba(79, 26, 214, 0.46) 100%)',
+            filter: 'blur(100px)',
+            opacity: 0.6,
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+          }}
+        />
+
+        {/* DarkVeil Background - Commented out */}
+        {/* <div className="absolute inset-0 z-0">
+          <DarkVeil
+            hueShift={348}
+            noiseIntensity={0.03}
+            scanlineIntensity={0.1}
+            speed={0.8}
+            scanlineFrequency={2.2}
+            warpAmount={2.7}
+            resolutionScale={1}
+          />
+        </div> */}
+
+        {/* Content */}
+        <div className="max-w-4xl mx-auto text-center relative z-10">
           <motion.div
             initial={{
               opacity: 0,
@@ -795,14 +767,14 @@ const ScholarSparkInvestorLandingPage: React.FC = () => {
               research partnerships. Join us in revolutionizing academic research.
             </p>
 
-            <button
+            <GradientButton
               onClick={handleCTAClick}
-              className="px-10 py-5 bg-gradient-to-r from-[#8F8EDF] to-pink-600 rounded-lg font-semibold text-xl hover:from-[#7A79C9] hover:to-pink-700 transition-all duration-300 flex items-center space-x-3 mx-auto group mb-8"
+              className="px-10 py-5 text-xl flex items-center space-x-3 mx-auto group mb-8"
             >
               <Mail className="w-6 h-6" />
               <span>Request Investor Deck</span>
               <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
-            </button>
+            </GradientButton>
 
             <div className="text-gray-400">
               <p className="mb-2">Direct Contact:</p>
@@ -821,10 +793,11 @@ const ScholarSparkInvestorLandingPage: React.FC = () => {
       <footer className="py-8 px-6 border-t border-gray-800">
         <div className="max-w-6xl mx-auto text-center">
           <div className="flex items-center justify-center space-x-2 mb-4">
-            <div className="w-6 h-6 bg-gradient-to-br from-[#8F8EDF] to-pink-500 rounded flex items-center justify-center">
-              <Brain className="w-4 h-4 text-white" />
-            </div>
-            <span className="font-semibold">ScholarSpark</span>
+            <img
+              src="/logos/logo-vertical.png"
+              alt="Neomycelia Logo"
+              className="w-[104px] h-auto"
+            />
           </div>
           <p className="text-gray-400 text-sm">© 2024 ScholarSpark. All rights reserved.</p>
         </div>

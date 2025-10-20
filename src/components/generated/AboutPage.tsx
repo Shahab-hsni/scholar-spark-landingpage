@@ -4,6 +4,8 @@
 
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { GradientButton } from '../ui/GradientButton';
+import Header from '../ui/Header';
 
 // SVG component for the background pattern in the "Our Vision" section.
 const VisionPatternSVG = () => (
@@ -140,122 +142,20 @@ const AboutPage = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="bg-[#0A090C] text-[#E0E0E0] font-sans">
+    <div className="bg-[#0A090C] text-[#E0E0E0] font-sans" data-scroll-section>
       {/* Header */}
-      <header className="fixed top-0 w-full z-50 p-2">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="bg-[#1A1A1A]/80 backdrop-blur-md border border-gray-600/50 rounded-lg p-2 flex items-center justify-center gap-3 w-max mx-auto shadow-lg">
-            {/* Home - Clickable */}
-            <button
-              onClick={() => navigate('/')}
-              className="text-white font-medium text-sm px-3 py-1.5 hover:bg-[#2A2A2A] hover:border hover:border-gray-500 rounded-lg transition-all duration-200 flex items-center space-x-2"
-            >
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M3 9L12 2L21 9V20C21 20.5304 20.7893 21.0391 20.4142 21.4142C20.0391 21.7893 19.5304 22 19 22H5C4.46957 22 3.96086 21.7893 3.58579 21.4142C3.21071 21.0391 3 20.5304 3 20V9Z"
-                  stroke="white"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-                <path
-                  d="M9 22V12H15V22"
-                  stroke="white"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-              <span>Home</span>
-            </button>
-
-            {/* About - Active State */}
-            <div className="bg-[#2A2A2A] border border-gray-500 rounded-lg px-3 py-1.5 flex items-center space-x-2">
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2ZM21 9V7L15 1H5C3.89 1 3 1.89 3 3V21C3 22.11 3.89 23 5 23H19C20.11 23 21 22.11 21 21V9ZM19 21H5V3H13V9H19V21Z"
-                  stroke="white"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-              <span className="text-white font-medium text-sm">About</span>
-            </div>
-
-            {/* Preview app - Inactive State */}
-            <div className="text-white font-medium px-3 py-1.5 flex items-center space-x-2">
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M14 2H6C5.46957 2 4.96086 2.21071 4.58579 2.58579C4.21071 2.96086 4 3.46957 4 4V20C4 20.5304 4.21071 21.0391 4.58579 21.4142C4.96086 21.7893 5.46957 22 6 22H18C18.5304 22 19.0391 21.7893 19.4142 21.4142C19.7893 21.0391 20 20.5304 20 20V8L14 2Z"
-                  stroke="white"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-                <path
-                  d="M14 2V8H20"
-                  stroke="white"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-                <path
-                  d="M16 13H8"
-                  stroke="white"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-                <path
-                  d="M16 17H8"
-                  stroke="white"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-                <path
-                  d="M10 9H9H8"
-                  stroke="white"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-              <span className="text-sm">Preview app</span>
-            </div>
-          </div>
-        </div>
-      </header>
+      <Header />
 
       {/* Main Content */}
       <main>
         <VisionPatternSVG />
-        <section className="py-20 sm:py-32 text-center section-gradient">
-          <div className="max-w-6xl mx-auto px-4">
+        <section className="pt-32 pb-20 px-6 sm:px-10 md:px-6 text-center section-gradient">
+          <div className="max-w-6xl mx-auto">
             <div className="max-w-4xl mx-auto">
               <h1 className="text-4xl sm:text-6xl md:text-7xl font-extrabold text-white mb-6 leading-tight">
                 A reimagined way to organise and collaborate on your reviews.
               </h1>
-              <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto">
+              <p className="text-xl text-gray-300 max-w-3xl mx-auto">
                 We are dedicated to revolutionizing how researchers conduct systematic literature
                 reviews. By offering advanced tools for organization, collaboration, and insights,
                 we help teams focus on what matters: making impactful discoveries.
@@ -264,26 +164,26 @@ const AboutPage = () => {
           </div>
         </section>
 
-        <section className="py-20 sm:py-32 relative overflow-hidden">
-          <div className="max-w-6xl mx-auto px-4 relative z-10">
+        <section className="py-20 px-6 sm:px-10 md:px-6 relative overflow-hidden">
+          <div className="max-w-6xl mx-auto relative z-10">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
               <div className="text-center md:text-left">
                 <h2 className="text-4xl md:text-5xl font-bold mb-6">Our Vision</h2>
-                <p className="text-lg text-gray-400">
+                <p className="text-xl text-gray-300">
                   Empowering researchers with cutting-edge technology and fostering global
                   collaboration to accelerate the pace of discovery.
                 </p>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <div className="stat-card p-6 rounded-2xl">
+                <div className="stat-card p-6 rounded-2xl card-hover">
                   <h3 className="text-xl font-bold text-white mb-2">Systematic Collaboration</h3>
-                  <p className="text-gray-400">
+                  <p className="text-gray-300">
                     Unifying teams with tools designed for a seamless, shared workflow.
                   </p>
                 </div>
-                <div className="stat-card p-6 rounded-2xl">
+                <div className="stat-card p-6 rounded-2xl card-hover">
                   <h3 className="text-xl font-bold text-white mb-2">AI-Powered Insights</h3>
-                  <p className="text-gray-400">
+                  <p className="text-gray-300">
                     Leveraging intelligent automation to uncover deeper connections in data.
                   </p>
                 </div>
@@ -292,11 +192,11 @@ const AboutPage = () => {
           </div>
         </section>
 
-        <section className="py-20 sm:py-32 bg-black/20 section-gradient">
-          <div className="max-w-6xl mx-auto px-4">
+        <section className="py-20 px-6 sm:px-10 md:px-6 section-gradient">
+          <div className="max-w-6xl mx-auto">
             <div className="text-center max-w-3xl mx-auto mb-16">
               <h2 className="text-4xl md:text-5xl font-bold mb-6">What We Offer</h2>
-              <p className="mt-4 text-lg text-gray-400">
+              <p className="text-xl text-gray-300">
                 Comprehensive tools designed specifically for modern research.
               </p>
             </div>
@@ -306,7 +206,7 @@ const AboutPage = () => {
                 <p className="text-gray-300">
                   Organize, annotate, and cite references with ease, saving valuable research time.
                 </p>
-                <ul className="mt-4 text-purple-400 space-y-2">
+                <ul className="mt-4 text-[#8F8EDF] space-y-2">
                   <li>✓ Smart Citations</li>
                   <li>✓ Annotation Tools</li>
                   <li>✓ Export Options</li>
@@ -318,7 +218,7 @@ const AboutPage = () => {
                   Facilitate teamwork with real-time editing, task management, and discussion
                   threads.
                 </p>
-                <ul className="mt-4 text-purple-400 space-y-2">
+                <ul className="mt-4 text-[#8F8EDF] space-y-2">
                   <li>✓ Real-time Editing</li>
                   <li>✓ Task Management</li>
                   <li>✓ Version Control</li>
@@ -330,7 +230,7 @@ const AboutPage = () => {
                   Unlock the future of research with AI-driven landscape visualization and
                   literature guidance.
                 </p>
-                <ul className="mt-4 text-purple-400 space-y-2">
+                <ul className="mt-4 text-[#8F8EDF] space-y-2">
                   <li>✓ Smart Literature Guide</li>
                   <li>✓ Research Landscape Viz</li>
                   <li>✓ Automated Extraction</li>
@@ -340,20 +240,20 @@ const AboutPage = () => {
           </div>
         </section>
 
-        <section className="py-20 sm:py-32">
-          <div className="max-w-6xl mx-auto px-4">
+        <section className="py-20 px-6 sm:px-10 md:px-6">
+          <div className="max-w-6xl mx-auto">
             <div className="max-w-3xl mx-auto text-center mb-16">
               <h2 className="text-4xl md:text-5xl font-bold mb-6">Our Journey</h2>
-              <p className="mt-4 text-lg text-gray-400">
+              <p className="text-xl text-gray-300">
                 We are a group of Academics that are keen to fix the issues we have faced.
               </p>
             </div>
             <div className="max-w-md mx-auto">
               <div className="space-y-12">
-                <div className="timeline-item flex gap-x-6">
-                  <div className="timeline-dot w-8 h-8 rounded-full flex-shrink-0 flex items-center justify-center">
+                <div className="flex gap-x-6">
+                  <div className="w-8 h-8 rounded-full flex-shrink-0 flex items-center justify-center bg-[#8F8EDF]/20 border border-[#8F8EDF]/50">
                     <svg
-                      className="w-5 h-5 text-purple-400"
+                      className="w-5 h-5 text-[#8F8EDF]"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -368,16 +268,16 @@ const AboutPage = () => {
                   </div>
                   <div>
                     <h3 className="text-xl font-bold text-white mb-1">Data-Driven Discovery</h3>
-                    <p className="text-gray-400">
+                    <p className="text-gray-300">
                       Using data-driven and consensus-driven surveys, we have understood the need
                       for a tool that can enable improved reviews and better collaboration.
                     </p>
                   </div>
                 </div>
-                <div className="timeline-item flex gap-x-6">
-                  <div className="timeline-dot w-8 h-8 rounded-full flex-shrink-0 flex items-center justify-center">
+                <div className="flex gap-x-6">
+                  <div className="w-8 h-8 rounded-full flex-shrink-0 flex items-center justify-center bg-[#8F8EDF]/20 border border-[#8F8EDF]/50">
                     <svg
-                      className="w-5 h-5 text-purple-400"
+                      className="w-5 h-5 text-[#8F8EDF]"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -392,15 +292,15 @@ const AboutPage = () => {
                   </div>
                   <div>
                     <h3 className="text-xl font-bold text-white mb-1">Research Tools Reimagined</h3>
-                    <p className="text-gray-400">
+                    <p className="text-gray-300">
                       Innovating Research Tools for the modern academic workflow.
                     </p>
                   </div>
                 </div>
-                <div className="timeline-item flex gap-x-6">
-                  <div className="timeline-dot w-8 h-8 rounded-full flex-shrink-0 flex items-center justify-center">
+                <div className="flex gap-x-6">
+                  <div className="w-8 h-8 rounded-full flex-shrink-0 flex items-center justify-center bg-[#8F8EDF]/20 border border-[#8F8EDF]/50">
                     <svg
-                      className="w-5 h-5 text-purple-400"
+                      className="w-5 h-5 text-[#8F8EDF]"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -415,7 +315,7 @@ const AboutPage = () => {
                   </div>
                   <div>
                     <h3 className="text-xl font-bold text-white mb-1">Building the Future</h3>
-                    <p className="text-gray-400">
+                    <p className="text-gray-300">
                       On the way to develop a product that every researcher will love.
                     </p>
                   </div>
@@ -425,29 +325,26 @@ const AboutPage = () => {
           </div>
         </section>
 
-        <section className="py-20 sm:py-32 section-gradient">
-          <div className="max-w-6xl mx-auto px-4 text-center">
+        <section className="py-20 px-6 sm:px-10 md:px-6 section-gradient">
+          <div className="max-w-6xl mx-auto text-center">
             <div className="max-w-3xl mx-auto">
               <h2 className="text-4xl md:text-5xl font-bold mb-6">Join the Research Revolution</h2>
-              <p className="text-lg text-gray-400 mb-8">
+              <p className="text-xl text-gray-300 mb-8">
                 Whether you're a researcher looking to accelerate your work, an investor interested
                 in the future of AI-powered research, or a partner wanting to collaborate, we'd love
                 to hear from you.
               </p>
-              <a
-                href="#"
-                className="bg-purple-600 text-white font-bold py-4 px-10 rounded-lg text-lg hover:bg-purple-700 transition-all duration-300 glow-button"
-              >
-                Get in Touch
-              </a>
+              <GradientButton asChild>
+                <a href="#">Get in Touch</a>
+              </GradientButton>
             </div>
           </div>
         </section>
       </main>
 
       {/* Footer */}
-      <footer className="py-8 border-t border-gray-800">
-        <div className="max-w-6xl mx-auto px-4 text-center text-gray-600 text-sm">
+      <footer className="py-8 px-6 sm:px-10 md:px-6 border-t border-gray-800">
+        <div className="max-w-6xl mx-auto text-center text-gray-600 text-sm">
           &copy; 2025 ScholarSpark. All Rights Reserved.
         </div>
       </footer>

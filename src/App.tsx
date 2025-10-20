@@ -18,8 +18,8 @@ function App() {
   setTheme(theme);
 
   return (
-    <SmoothScroll>
-      <Router>
+    <Router>
+      <SmoothScroll>
         <Routes>
           {/* Homepage routes */}
           <Route path="/" element={<ScholarSparkInvestorLandingPage />} />
@@ -31,8 +31,8 @@ function App() {
           {/* Redirect any unknown routes to home */}
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
-      </Router>
-    </SmoothScroll>
+      </SmoothScroll>
+    </Router>
   );
 }
 
