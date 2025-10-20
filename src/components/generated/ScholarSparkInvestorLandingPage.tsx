@@ -544,7 +544,7 @@ const ScholarSparkInvestorLandingPage: React.FC = () => {
             </p>
           </motion.div>
 
-          <div className="mt-[100px] grid grid-cols-4 gap-8 text-white/90">
+          <div className="mt-[100px] grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-8 text-white/90">
             {[
               { metric: 9, label: 'Researchers tested Prototype', suffix: '' },
               { metric: 161, label: 'Researchers surveyed', suffix: '' },

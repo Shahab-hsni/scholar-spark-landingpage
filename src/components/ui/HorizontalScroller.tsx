@@ -83,8 +83,8 @@ export const HorizontalScroller = React.forwardRef<HTMLDivElement, Props>(
 
     const headerClass =
       headerLeft || title
-        ? 'flex items-end justify-between px-2 sm:px-4 mb-4'
-        : 'flex items-end justify-end px-2 sm:px-4 mb-4';
+        ? 'flex items-end gap-4 md:gap-2 flex-col md:flex-row justify-between px-2 sm:px-4 mb-4'
+        : 'flex items-end gap-4 md:gap-2 flex-col md:flex-row justify-end px-2 sm:px-4 mb-4';
 
     return (
       <section ref={ref} className={cn('w-full', className)} {...props}>

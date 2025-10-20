@@ -445,7 +445,7 @@ function ContainerRoot() {
   const toggle = (idx: number) => setExpandedIdx(expandedIdx === idx ? null : idx);
   return (
     <div
-      className="content-stretch flex flex-col gap-[50px] items-center justify-center max-w-[1280px] mx-auto relative shrink-0 w-full px-6"
+      className="content-stretch flex flex-col gap-[50px] items-center justify-center max-w-[1280px] mx-auto relative shrink-0 w-full px-0 md:px-6"
       data-name="Container"
     >
       <HorizontalScroller
@@ -476,7 +476,7 @@ export default function SectionTeam() {
   return (
     <div className="relative size-full" data-name="Section - Section Team">
       <div className="flex flex-col items-center justify-center size-full">
-        <div className="box-border content-stretch flex flex-col items-center justify-center px-6 sm:px-10 md:px-6 py-20 sm:py-24 md:py-32 relative size-full">
+        <div className="box-border content-stretch flex flex-col items-center justify-center px-0 sm:px-10 md:px-6 py-20 sm:py-24 md:py-32 relative size-full">
           <BackgroundGradient />
           <ContainerRoot />
         </div>
