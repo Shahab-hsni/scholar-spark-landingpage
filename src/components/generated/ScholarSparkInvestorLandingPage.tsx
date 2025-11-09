@@ -84,6 +84,7 @@ import { GradientButton } from '../ui/GradientButton';
 import { useNavigate } from 'react-router-dom';
 import RadialOrbitalTimeline, { TimelineItem } from '../ui/RadialOrbitalTimeline';
 import { ContainerScroll } from '../ui/container-scroll-animation';
+import { MailerliteFullEmbed } from '../ui/MailerLiteFullEmbed';
 // Lottie animations will be loaded dynamically
 
 const ScholarSparkInvestorLandingPage: React.FC = () => {
@@ -792,6 +793,9 @@ const ScholarSparkInvestorLandingPage: React.FC = () => {
             </div>
           </motion.div>
         </div>
+      </section>
+      <section className="py-20 px-6 sm:px-10 md:px-6 relative overflow-visible">
+        <MailerliteFullEmbed/>
       </section>
 
       {/* Footer */}
