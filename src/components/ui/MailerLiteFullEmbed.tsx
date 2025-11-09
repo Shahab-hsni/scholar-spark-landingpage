@@ -33,10 +33,10 @@ export function MailerliteFullEmbed() {
 
     return (
         <div
-            className="relative w-full p-8 rounded-lg mb-4 flex flex-col items-center border border-gray-300"
+            className="relative w-full p-8 rounded-lg mb-4 flex flex-col items-center"
         >
             <h2
-                className="relative mb-4 text-2xl font-bold text-center"
+                className="text-4xl md:text-5xl font-bold mb-6"
             >
                 Join Our Waitlist
             </h2>
@@ -62,7 +62,8 @@ export function MailerliteFullEmbed() {
                         required
                         className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                     />
-                    <GradientButton type="submit" className="w-full">
+                    <GradientButton type="submit" 
+                    className="px-10 py-5 text-xl flex items-center space-x-3 mx-auto group mb-8 w-max">
                         Submit
                     </GradientButton>
                 </div>
