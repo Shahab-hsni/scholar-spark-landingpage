@@ -67,8 +67,7 @@ export default function Header() {
             <span>About</span>
           </Link>
 
-          {/* Preview app (placeholder) */}
-          <div className="text-white font-medium px-3 py-1.5 flex items-center space-x-2">
+          <Link to="https://app.scholarspark.ai" target="_blank" className={`${baseBtn} ${inactiveHover}`}>
             <svg
               width="16"
               height="16"
@@ -113,7 +112,7 @@ export default function Header() {
               />
             </svg>
             <span className="text-sm">Preview app</span>
-          </div>
+          </Link>
         </div>
       </div>
     </header>
