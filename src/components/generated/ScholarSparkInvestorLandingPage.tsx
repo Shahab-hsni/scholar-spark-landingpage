@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { motion, useMotionValue, useTransform, useAnimation } from 'framer-motion';
-import DarkVeil from '../ui/DarkVeil';
+import { motion } from 'framer-motion';
 import SectionTeam from '../ui/SectionTeam';
 import Header from '../ui/Header';
-import { MailerliteFullEmbed } from '../ui/MailerLiteFullEmbed';
 
 // CountUp component for animated numbers
 const CountUp = ({
@@ -793,9 +791,6 @@ const ScholarSparkInvestorLandingPage: React.FC = () => {
             </div>
           </motion.div>
         </div>
-      </section>
-      <section className="py-20 px-6 sm:px-10 md:px-6 relative overflow-visible">
-        <MailerliteFullEmbed/>
       </section>
 
       {/* Footer */}

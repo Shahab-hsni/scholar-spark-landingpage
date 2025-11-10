@@ -5,7 +5,7 @@
 import React, { useRef, useEffect, useId } from 'react';
 import { motion } from 'framer-motion';
 import { ContainerScroll } from '../ui/container-scroll-animation';
-import { GradientButton } from '../ui/GradientButton';
+import { MailerliteFullEmbed } from '../ui/MailerLiteFullEmbed';
 
 // The main SVG component for the interactive background.
 // It contains two layers: a base (dark gray) and a highlight (purple) revealed by a mask.
@@ -501,11 +501,7 @@ const Hero = () => {
                   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } },
                 }}
               >
-                <GradientButton asChild className="py-4 px-10 text-lg">
-                  <a href="/pdf/pitchDeck.pdf" download="ScholarSpark-Investor-Deck.pdf">
-                    Request Investor Deck
-                  </a>
-                </GradientButton>
+                <MailerliteFullEmbed/>
               </motion.div>
               <motion.div
                 className="mt-12 text-sm text-gray-400"
