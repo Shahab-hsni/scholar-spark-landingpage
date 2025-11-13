@@ -166,4 +166,4 @@ This project is proprietary software for ScholarSpark.
 
 ---
 
-Built with ❤️ for the future of AI-powered research.
+Built with ❤️ for the future of AI-powered research..
