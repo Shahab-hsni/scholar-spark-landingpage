@@ -483,7 +483,7 @@ const Hero = () => {
                   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } },
                 }}
               >
-                From Months of Work to Moments of Insight
+                Systematic literature review 60% faster
               </motion.h1>
               <motion.p
                 className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-10"
@@ -492,8 +492,7 @@ const Hero = () => {
                   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } },
                 }}
               >
-                ScholarSpark is the AI-native platform that unifies the entire research workflow,
-                turning 6 months of fragmented work into 6 weeks of focused discovery.
+                A precision-driven platform that streamlines discovery, organization, and synthesis of research.
               </motion.p>
               <motion.div
                 variants={{

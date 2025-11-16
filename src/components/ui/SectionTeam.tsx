@@ -44,18 +44,6 @@ const teamData = [
     } as React.CSSProperties,
   },
   {
-    name: 'Sofia Martin',
-    role: 'Project Manager',
-    description:
-      'Visionary leader passionate about building innovative digital solutions and growing strong teams.',
-    image: img1N,
-    imageStyle: {
-      height: '114.32%',
-      top: '-7.16%',
-      width: '100%',
-    } as React.CSSProperties,
-  },
-  {
     name: 'Yu Han',
     role: 'UX Designer',
     description: 'Designs intuitive researcher experiences aligned with our brand and vision.',
@@ -71,28 +59,6 @@ const teamData = [
     role: 'Data Scientist',
     description: 'Builds robust evaluation pipelines and turns data into decisions.',
     image: '/team-members/Caique.webp',
-    imageStyle: {
-      height: '114.32%',
-      top: '-7.16%',
-      width: '100%',
-    } as React.CSSProperties,
-  },
-  {
-    name: 'Sri',
-    role: 'Research Lead',
-    description: 'Guides methodology and ensures scientific rigor across our features.',
-    image: '/team-members/Sri.webp',
-    imageStyle: {
-      height: '114.32%',
-      top: '-7.16%',
-      width: '100%',
-    } as React.CSSProperties,
-  },
-  {
-    name: 'Natalia',
-    role: 'Backend Engineer',
-    description: 'Owns distributed systems and scalable APIs for our platform.',
-    image: '/team-members/Natalia.webp',
     imageStyle: {
       height: '114.32%',
       top: '-7.16%',

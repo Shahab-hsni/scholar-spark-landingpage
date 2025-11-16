@@ -202,7 +202,7 @@ const ScholarSparkInvestorLandingPage: React.FC = () => {
                   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } },
                 }}
               >
-                A product by Neomycelia.
+                The Connective Tissue of Academic Exploration.
               </motion.h2>
               <motion.p
                 className="text-xl text-gray-300 leading-relaxed"
@@ -550,7 +550,7 @@ const ScholarSparkInvestorLandingPage: React.FC = () => {
             {[
               { metric: 9, label: 'Researchers tested Prototype', suffix: '' },
               { metric: 161, label: 'Researchers surveyed', suffix: '' },
-              { metric: 100, label: 'Interest in an integrated tool', suffix: '%' },
+              { metric: 95, label: 'Interest in an integrated tool', suffix: '%' },
               { metric: 51.3, label: 'Conversion rate for beta sign-ups', suffix: '%' },
             ].map((s, i) => (
               <motion.div

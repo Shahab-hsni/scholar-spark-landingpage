@@ -155,12 +155,10 @@ const AboutPage = () => {
           <div className="max-w-6xl mx-auto">
             <div className="max-w-4xl mx-auto">
               <h1 className="text-4xl sm:text-6xl md:text-7xl font-extrabold text-white mb-6 leading-tight">
-                A reimagined way to organise and collaborate on your reviews.
+               The Intelligent Literature Review Engine: Your Research Co-Pilot.
               </h1>
               <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-                We are dedicated to revolutionizing how researchers conduct systematic literature
-                reviews. By offering advanced tools for organization, collaboration, and insights,
-                we help teams focus on what matters: making impactful discoveries.
+               Scholar Spark provides an AI-powered, integrated platform that streamlines the discovery, organization, and synthesis of research.
               </p>
             </div>
           </div>
@@ -172,8 +170,7 @@ const AboutPage = () => {
               <div className="text-center md:text-left">
                 <h2 className="text-4xl md:text-5xl font-bold mb-6">Our Vision</h2>
                 <p className="text-xl text-gray-300">
-                  Empowering researchers with cutting-edge technology and fostering global
-                  collaboration to accelerate the pace of discovery.
+                 To usher in a new golden age of human progress, where the boundaries of knowledge crumble before the relentless march of accelerated research. We envision a world where every question sparks a wildfire of collaborative discovery, where insights bloom like a thousand flowers in the fertile soil of shared wisdom. Through our innovations, we seek to weave a global tapestry of interconnected minds, transcending borders and disciplines, where the seeds of today’s research bear fruit as tomorrow’s solutions.
                 </p>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
