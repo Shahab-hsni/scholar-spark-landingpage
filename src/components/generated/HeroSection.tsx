@@ -457,7 +457,7 @@ const Hero = () => {
         <div className="hero-content">
           <section className="container mx-auto px-4 sm:px-10 md:px-6 h-screen flex items-center justify-center text-center">
             <motion.div
-              className="max-w-4xl mx-auto content"
+              className="max-w-4xl mx-auto"
               initial="hidden"
               animate="visible"
               variants={{
