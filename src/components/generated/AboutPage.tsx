@@ -244,81 +244,175 @@ const AboutPage = () => {
             <div className="max-w-3xl mx-auto text-center mb-16">
               <h2 className="text-4xl md:text-5xl font-bold mb-6">Our Journey</h2>
               <p className="text-xl text-gray-300">
-                We are a group of Academics that are keen to fix the issues we have faced.
+                From concept to reality, our path to revolutionizing research.
               </p>
             </div>
-            <div className="max-w-md mx-auto">
-              <div className="space-y-12">
-                <div className="flex gap-x-6">
-                  <div className="w-8 h-8 rounded-full flex-shrink-0 flex items-center justify-center bg-[#8F8EDF]/20 border border-[#8F8EDF]/50">
-                    <svg
-                      className="w-5 h-5 text-[#8F8EDF]"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                      />
+            
+            {/* Timeline */}
+            <div className="max-w-4xl mx-auto relative">
+              {/* Vertical line */}
+              <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-[#8F8EDF] via-[#6f6dd5] to-[#8F8EDF] opacity-30"></div>
+              
+              <div className="space-y-16">
+                {/* Timeline Item 1 */}
+                <motion.div
+                  initial={{ opacity: 0, x: -50 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.6 }}
+                  viewport={{ once: true }}
+                  className="relative flex flex-col md:flex-row items-start md:items-center"
+                >
+                  <div className="flex items-start w-full md:w-1/2 md:pr-12 md:text-right">
+                    <div className="flex-1 md:order-1">
+                      <div className="mb-2">
+                        <span className="inline-block px-4 py-1 rounded-full bg-[#8F8EDF]/10 border border-[#8F8EDF]/30 text-[#8F8EDF] text-sm font-semibold">
+                          December 2024
+                        </span>
+                      </div>
+                      <h3 className="text-2xl font-bold text-white mb-2">Initial Problem Validation</h3>
+                      <p className="text-gray-300">
+                        Using data-driven and consensus-driven surveys, we identified the critical need for improved literature review tools and better collaboration in research.
+                      </p>
+                    </div>
+                  </div>
+                  
+                  {/* Center dot */}
+                  <div className="absolute left-8 md:left-1/2 md:-translate-x-1/2 w-16 h-16 rounded-full bg-[#0A090C] border-4 border-[#8F8EDF] flex items-center justify-center z-10">
+                    <svg className="w-8 h-8 text-[#8F8EDF]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                     </svg>
                   </div>
-                  <div>
-                    <h3 className="text-xl font-bold text-white mb-1">Data-Driven Discovery</h3>
-                    <p className="text-gray-300">
-                      Using data-driven and consensus-driven surveys, we have understood the need
-                      for a tool that can enable improved reviews and better collaboration.
-                    </p>
-                  </div>
-                </div>
-                <div className="flex gap-x-6">
-                  <div className="w-8 h-8 rounded-full flex-shrink-0 flex items-center justify-center bg-[#8F8EDF]/20 border border-[#8F8EDF]/50">
-                    <svg
-                      className="w-5 h-5 text-[#8F8EDF]"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
-                      />
+                  
+                  <div className="hidden md:block w-1/2"></div>
+                </motion.div>
+
+                {/* Timeline Item 2 */}
+                <motion.div
+                  initial={{ opacity: 0, x: 50 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.6, delay: 0.2 }}
+                  viewport={{ once: true }}
+                  className="relative flex flex-col md:flex-row items-start md:items-center"
+                >
+                  <div className="hidden md:block w-1/2"></div>
+                  
+                  {/* Center dot */}
+                  <div className="absolute left-8 md:left-1/2 md:-translate-x-1/2 w-16 h-16 rounded-full bg-[#0A090C] border-4 border-[#8F8EDF] flex items-center justify-center z-10">
+                    <svg className="w-8 h-8 text-[#8F8EDF]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                     </svg>
                   </div>
-                  <div>
-                    <h3 className="text-xl font-bold text-white mb-1">Research Tools Reimagined</h3>
-                    <p className="text-gray-300">
-                      Innovating Research Tools for the modern academic workflow.
-                    </p>
+                  
+                  <div className="flex items-start w-full md:w-1/2 md:pl-12">
+                    <div className="flex-1">
+                      <div className="mb-2">
+                        <span className="inline-block px-4 py-1 rounded-full bg-[#8F8EDF]/10 border border-[#8F8EDF]/30 text-[#8F8EDF] text-sm font-semibold">
+                          March 2025
+                        </span>
+                      </div>
+                      <h3 className="text-2xl font-bold text-white mb-2">Team Foundation</h3>
+                      <p className="text-gray-300">
+                        Assembled a passionate team of researchers and developers united by the vision to transform academic research workflows.
+                      </p>
+                    </div>
                   </div>
-                </div>
-                <div className="flex gap-x-6">
-                  <div className="w-8 h-8 rounded-full flex-shrink-0 flex items-center justify-center bg-[#8F8EDF]/20 border border-[#8F8EDF]/50">
-                    <svg
-                      className="w-5 h-5 text-[#8F8EDF]"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M13 10V3L4 14h7v7l9-11h-7z"
-                      />
+                </motion.div>
+
+                {/* Timeline Item 3 */}
+                <motion.div
+                  initial={{ opacity: 0, x: -50 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.6, delay: 0.4 }}
+                  viewport={{ once: true }}
+                  className="relative flex flex-col md:flex-row items-start md:items-center"
+                >
+                  <div className="flex items-start w-full md:w-1/2 md:pr-12 md:text-right">
+                    <div className="flex-1 md:order-1">
+                      <div className="mb-2">
+                        <span className="inline-block px-4 py-1 rounded-full bg-[#8F8EDF]/10 border border-[#8F8EDF]/30 text-[#8F8EDF] text-sm font-semibold">
+                          August 2025
+                        </span>
+                      </div>
+                      <h3 className="text-2xl font-bold text-white mb-2">Prototype Created</h3>
+                      <p className="text-gray-300">
+                        Developed our first working prototype, bringing the vision of an intelligent research platform to life with core features.
+                      </p>
+                    </div>
+                  </div>
+                  
+                  {/* Center dot */}
+                  <div className="absolute left-8 md:left-1/2 md:-translate-x-1/2 w-16 h-16 rounded-full bg-[#0A090C] border-4 border-[#8F8EDF] flex items-center justify-center z-10">
+                    <svg className="w-8 h-8 text-[#8F8EDF]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
                     </svg>
                   </div>
-                  <div>
-                    <h3 className="text-xl font-bold text-white mb-1">Building the Future</h3>
-                    <p className="text-gray-300">
-                      On the way to develop a product that every researcher will love.
-                    </p>
+                  
+                  <div className="hidden md:block w-1/2"></div>
+                </motion.div>
+
+                {/* Timeline Item 4 */}
+                <motion.div
+                  initial={{ opacity: 0, x: 50 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.6, delay: 0.6 }}
+                  viewport={{ once: true }}
+                  className="relative flex flex-col md:flex-row items-start md:items-center"
+                >
+                  <div className="hidden md:block w-1/2"></div>
+                  
+                  {/* Center dot */}
+                  <div className="absolute left-8 md:left-1/2 md:-translate-x-1/2 w-16 h-16 rounded-full bg-[#0A090C] border-4 border-[#8F8EDF] flex items-center justify-center z-10">
+                    <svg className="w-8 h-8 text-[#8F8EDF]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
                   </div>
-                </div>
+                  
+                  <div className="flex items-start w-full md:w-1/2 md:pl-12">
+                    <div className="flex-1">
+                      <div className="mb-2">
+                        <span className="inline-block px-4 py-1 rounded-full bg-[#8F8EDF]/10 border border-[#8F8EDF]/30 text-[#8F8EDF] text-sm font-semibold">
+                          August 2025
+                        </span>
+                      </div>
+                      <h3 className="text-2xl font-bold text-white mb-2">Solution Validation</h3>
+                      <p className="text-gray-300">
+                        Successfully validated our solution with real researchers, confirming the platform meets critical needs in literature review workflows.
+                      </p>
+                    </div>
+                  </div>
+                </motion.div>
+
+                {/* Timeline Item 5 */}
+                <motion.div
+                  initial={{ opacity: 0, x: -50 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.6, delay: 0.8 }}
+                  viewport={{ once: true }}
+                  className="relative flex flex-col md:flex-row items-start md:items-center"
+                >
+                  <div className="flex items-start w-full md:w-1/2 md:pr-12 md:text-right">
+                    <div className="flex-1 md:order-1">
+                      <div className="mb-2">
+                        <span className="inline-block px-4 py-1 rounded-full bg-gradient-to-r from-[#8F8EDF] to-[#6f6dd5] text-white text-sm font-semibold">
+                          October 2025
+                        </span>
+                      </div>
+                      <h3 className="text-2xl font-bold text-white mb-2">Strategic Co-Founder Joins</h3>
+                      <p className="text-gray-300">
+                        Mike joined as strategic co-founder, bringing invaluable expertise to accelerate our mission of revolutionizing academic research.
+                      </p>
+                    </div>
+                  </div>
+                  
+                  {/* Center dot - special styling for latest milestone */}
+                  <div className="absolute left-8 md:left-1/2 md:-translate-x-1/2 w-16 h-16 rounded-full bg-gradient-to-br from-[#8F8EDF] to-[#6f6dd5] flex items-center justify-center z-10 shadow-lg shadow-[#8F8EDF]/50">
+                    <svg className="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                    </svg>
+                  </div>
+                  
+                  <div className="hidden md:block w-1/2"></div>
+                </motion.div>
               </div>
             </div>
           </div>
