@@ -12,16 +12,16 @@ const img1N = '/team-members/Aya.webp';
 
 const teamData = [
   {
-    name: 'Lucas Harris',
-    role: 'AI Expert',
+    name: 'Dr. Pouya Ataei',
+    role: 'Founder & CEO',
     description:
       'Visionary leader passionate about building innovative digital solutions and growing strong teams.',
     image: imgOG,
     imageStyle: { left: '-67.55%', width: '235.1%' } as React.CSSProperties,
   },
   {
-    name: 'Peter Johnson',
-    role: 'Founder of Etery',
+    name: 'Mike Ghasemi',
+    role: 'Co-Founder & Chief Strategy Officer(CSO)',
     description:
       'Visionary leader passionate about building innovative digital solutions and growing strong teams.',
     image: imgUO,
@@ -32,7 +32,7 @@ const teamData = [
     } as React.CSSProperties,
   },
   {
-    name: 'Daniel Lee',
+    name: 'Shahab',
     role: 'Full-Stack Developer',
     description:
       'Visionary leader passionate about building innovative digital solutions and growing strong teams.',
