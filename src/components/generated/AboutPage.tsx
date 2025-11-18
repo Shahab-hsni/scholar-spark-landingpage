@@ -196,43 +196,41 @@ const AboutPage = () => {
             <div className="text-center max-w-3xl mx-auto mb-16">
               <h2 className="text-4xl md:text-5xl font-bold mb-6">What We Offer</h2>
               <p className="text-xl text-gray-300">
-                Comprehensive tools designed specifically for modern research.
+                Integrated tools that streamline every stage of research.
               </p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               <div className="stat-card p-8 rounded-2xl card-hover">
-                <h3 className="text-2xl font-bold text-white mb-3">Reference Management</h3>
+                <h3 className="text-2xl font-bold text-white mb-3">AI-Powered Intelligence</h3>
                 <p className="text-gray-300">
-                  Organize, annotate, and cite references with ease, saving valuable research time.
+                  Automate literature reviews and accelerate insights.
                 </p>
                 <ul className="mt-4 text-[#8F8EDF] space-y-2">
-                  <li>✓ Smart Citations</li>
-                  <li>✓ Annotation Tools</li>
-                  <li>✓ Export Options</li>
+                  <li>✓ <b>Smart Review Assistant:</b> Reduces review time by 50% with automated screening and quality assessment</li>
+                  <li>✓ <b>Automated Synthesis:</b> Cuts data processing by 70% with intelligent extraction and meta-analysis</li>
+                  <li>✓ <b>Visual Knowledge Mapping:</b> Automatically connects papers and visualizes relationships</li>
                 </ul>
               </div>
               <div className="stat-card p-8 rounded-2xl card-hover">
-                <h3 className="text-2xl font-bold text-white mb-3">Collaboration Features</h3>
+                <h3 className="text-2xl font-bold text-white mb-3">Real-Time Collaboration</h3>
                 <p className="text-gray-300">
-                  Facilitate teamwork with real-time editing, task management, and discussion
-                  threads.
+                A unified, cloud-based workspace built for team science.
                 </p>
                 <ul className="mt-4 text-[#8F8EDF] space-y-2">
-                  <li>✓ Real-time Editing</li>
-                  <li>✓ Task Management</li>
-                  <li>✓ Version Control</li>
+                  <li>✓ <b>Live Editing & Version Control:</b> Real-time collaboration with integrated communication tools</li>
+                  <li>✓ <b>Team Review Management:</b> Coordinate from protocol to publication with task tracking</li>
+                  <li>✓ <b>Your Research Hub:</b> One workspace for exploration, synthesis, and citation</li>
                 </ul>
               </div>
               <div className="stat-card p-8 rounded-2xl card-hover bg-purple-900/20 border-purple-600">
-                <h3 className="text-2xl font-bold text-white mb-3">AI Insights (Coming Soon!)</h3>
+                <h3 className="text-2xl font-bold text-white mb-3">End-to-End Workflow</h3>
                 <p className="text-gray-300">
-                  Unlock the future of research with AI-driven landscape visualization and
-                  literature guidance.
+                Complete infrastructure for the entire research lifecycle.
                 </p>
                 <ul className="mt-4 text-[#8F8EDF] space-y-2">
-                  <li>✓ Smart Literature Guide</li>
-                  <li>✓ Research Landscape Viz</li>
-                  <li>✓ Automated Extraction</li>
+                  <li>✓ <b>Full Literature Review Lifecycle:</b> Replace fragmented tools with one integrated solution</li>
+                  <li>✓ <b>Smart Reference Management:</b> Organize, annotate, and cite with intelligent features</li>
+                  <li>✓<b>Focus on Innovation:</b> Reclaim 40% of project time lost to manual tasks</li>
                 </ul>
               </div>
             </div>
